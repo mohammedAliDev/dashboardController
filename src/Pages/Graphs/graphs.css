@@ -1,0 +1,33 @@
+.container{
+    padding: 10px;
+}
+.content{
+    padding: 5px;
+    margin-bottom: 15px;
+}
+.chip-btn{
+    margin-right: 8px;
+    background-color: rgb(54, 54, 241) !important;
+    color: white !important;
+}
+.chip-btn-sub{
+    margin-right: 5px;
+    background-color: rgb(245, 114, 67) !important;
+    border: 1px solid rgb(228, 157, 131) !important;
+    color: white !important;
+}
+.sel{
+    background-color: rgb(119, 119, 228) !important;
+    border: 1px solid rgb(119, 119, 228) !important;
+}
+.sel-sub{
+    background-color: rgb(228, 157, 131) !important;
+    border: 1px solid rgb(228, 157, 131) !important;
+}
+.card{
+    border: 1px solid #d4d4d4;
+    border-radius: 12%;
+    padding: 5px 10px;
+    background-color: #f7f4f4;
+    margin-bottom:5px ;
+}
