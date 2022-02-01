@@ -8,9 +8,13 @@ import DeviceInfo from '../../Components/DeviceInfo';
 const Graphs = (props) => {
 	const [dataDisplayed, setDataDisplayed] = useState('applicationData');
 	const [deviceDataDisplayed, setDeviceDataDisplayed] = useState('RTT');
-	const brandName = "Samsung";
-	const modelName = "Galaxy S Duos";
-	const osVersion = 10;
+	const [appVersion, setAppVersion] = useState(24);
+	const devInfo={
+		brandName:'Samsung',
+		modelName:'Galaxy S Duos',
+		osVersion:'10'
+	}
+	const [deviceInfo,setDeviceInfo] = useState(devInfo)
 	const series = [
 	{
 		name: "series-1",
@@ -43,11 +47,20 @@ const Graphs = (props) => {
 	text: dataDisplayed === 'applicationData'?deviceDataDisplayed:dataDisplayed,
 	align: 'center'
 	},
+	dataLabels:{
+		enabled:false
+	},
+	stroke: {
+		show: true,
+		curve:'straight',
+		width: 5,
+		dashArray: 0,      
+	},
 	markers: {
         size: 0,
         strokeColor: "#fff",
         strokeWidth: 1,
-        strokeOpacity: 1,
+        strokeOpacity: 6,
         fillOpacity: 1,
         hover: {
           size: 5
@@ -74,7 +87,7 @@ const Graphs = (props) => {
 			<Card className='card body'>
 				<h1 style={{textAlign:"center"}}>Device Location</h1>
 				<div className='content'>
-					<DeviceInfo brand={brandName} model={modelName} os={osVersion}/>
+					<DeviceInfo brand={deviceInfo.brandName} model={deviceInfo.modelName} os={deviceInfo.osVersion}/>
 					<Card className='card'>
 						<div className='content'>
 							<Row >
@@ -98,7 +111,7 @@ const Graphs = (props) => {
 										<span className='label'>Application Version</span>
 									</Col>
 									<Col xs={{ span: 24}} lg={{ span: 20}}>
-										<span>24</span>
+										<span>{appVersion}</span>
 									</Col>
 								</Row>
 								<Row >
@@ -118,7 +131,7 @@ const Graphs = (props) => {
 								options={options}
 								series={series}
 								height={500}
-								type="line"
+								type={dataDisplayed==="applicationData"?'area':'line'}
 							/>
 						</div>
 					</Card>
