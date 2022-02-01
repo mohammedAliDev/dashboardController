@@ -39,4 +39,9 @@
 }
 .info{
     padding: 15px 20px !important;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.label{
+    font-weight: 600;
+    
 }

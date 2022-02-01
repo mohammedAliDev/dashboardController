@@ -7,6 +7,9 @@ import 'antd/dist/antd.css';
 const Graphs = () => {
 	const [dataDisplayed, setDataDisplayed] = useState('applicationData');
 	const [deviceDataDisplayed, setDeviceDataDisplayed] = useState('rtt');
+	const brandName = "Samsung";
+	const modelName = "Galaxy S Duos";
+	const osVersion = 10;
 	const series = [
 	{
 		name: "series-1",
@@ -69,23 +72,23 @@ const Graphs = () => {
 		<div className='container'>
 			<div className='content'>
 				<div className='card info'>
-					<Row>
+					<Row >
 						<Col xs={{ span: 24}} md={{span:12}} lg={{ span: 8}}>
 							<Row>
-								<Col>Brand</Col>
-								<Col>Samsung</Col>
+								<Col className='label' span={5} offset={1}>Brand</Col>
+								<Col span={10} offset={1}>{brandName}</Col>
 							</Row>
 						</Col>
 						<Col xs={{ span: 24}} md={{span:12}} lg={{ span: 8}}>
 							<Row>
-								<Col>Brand</Col>
-								<Col>Samsung</Col>
+								<Col className='label' span={5} offset={1}>Model</Col>
+								<Col span={10} offset={1}>{modelName}</Col>
 							</Row>
 						</Col>
 						<Col xs={{ span: 24}} md={{span:12}} lg={{ span: 8}}>
 							<Row>
-								<Col>Brand</Col>
-								<Col>Samsung</Col>
+								<Col className='label' span={5} offset={1}>OS Version</Col>
+								<Col span={10} offset={1}>{osVersion}</Col>
 							</Row>
 						</Col>
 					</Row>
@@ -108,12 +111,12 @@ const Graphs = () => {
 						?
 						<div className='content'>
 							<div className='divider'></div>
-							<Row >
+							<Row className='content'>
 								<Col xs={{ span: 24}} lg={{ span: 4}}>
-									<h4>Application Version</h4>
+									<span className='label'>Application Version</span>
 								</Col>
 								<Col xs={{ span: 24}} lg={{ span: 20}}>
-									<h4>v2.0.3</h4>
+									<span>24</span>
 								</Col>
 							</Row>
 							<Row >
