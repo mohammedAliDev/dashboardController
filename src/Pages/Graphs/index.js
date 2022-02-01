@@ -14,17 +14,18 @@ const Graphs = (props) => {
 		modelName:'Galaxy S Duos',
 		osVersion:'10'
 	}
+	const defaultSeries=[
+		{
+			name: "series-1",
+			data: [52, 40, 45, 50, 49, 30, 36, 12, 52, 40, 45, 50, 49, 30, 30, 18, 52, 40, 45, 50, 49, 30, 31, 27, 50, 49, 30, 45, 59, 52, 40, 45, 4]
+		},
+		{
+			name: "series-2",
+			data: [45, 59, 52, 40, 45, 50, 49, 30, 45, 52, 40, 45, 50, 49, 10, 62, 59, 52, 40, 45, 50, 49, 10, 53, 59, 50, 49, 30, 39, 67, 52, 40, 45]
+		}
+		];
 	const [deviceInfo,setDeviceInfo] = useState(devInfo)
-	const series = [
-	{
-		name: "series-1",
-		data: [52, 40, 45, 50, 49, 30, 36, 12, 52, 40, 45, 50, 49, 30, 30, 18, 52, 40, 45, 50, 49, 30, 31, 27, 50, 49, 30, 45, 59, 52, 40, 45, 4]
-	},
-	{
-		name: "series-2",
-		data: [45, 59, 52, 40, 45, 50, 49, 30, 45, 52, 40, 45, 50, 49, 10, 62, 59, 52, 40, 45, 50, 49, 10, 53, 59, 50, 49, 30, 39, 67, 52, 40, 45]
-	}
-	];
+	const [series,setSeries] = useState(defaultSeries)
 	const options = {
 	chart: {
 		id: "line",
