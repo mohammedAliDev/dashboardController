@@ -3,7 +3,7 @@
 }
 .content{
     padding: 5px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 .chip-btn{
     margin-right: 8px;
@@ -26,8 +26,17 @@
 }
 .card{
     border: 1px solid #d4d4d4;
-    border-radius: 12%;
-    padding: 5px 10px;
+    border-radius: 10px !important;
+    padding: 5px 2px !important;
     background-color: #f7f4f4;
-    margin-bottom:5px ;
+    margin-bottom:10px !important ;
+}
+.divider
+{
+    border: 1px solid #d2d2d2;
+    height: 0px;
+    margin-bottom: 5px;
+}
+.info{
+    padding: 15px 20px !important;
 }

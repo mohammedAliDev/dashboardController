@@ -68,52 +68,75 @@ const Graphs = () => {
 	return (
 		<div className='container'>
 			<div className='content'>
-				<div className='content'>
-					<Card className='card'>
-						<h1>Device Details</h1>
-					</Card>
-				</div>
-				<div className='content'>
-					<Row >
-						<Col xs={{ span: 24}} lg={{ span: 24}}>
-							<Row >
-								<Button shape="round" size='medium' className={dataDisplayed==="applicationData" ? "chip-btn sel" : "chip-btn"} onClick={()=>{seeGraphType('applicationData')}}> Application Data</Button>
-								<Button shape="round" size='medium' className={dataDisplayed==="RSRQ" ? "chip-btn sel" : "chip-btn"} onClick={()=>{seeGraphType('RSRQ')}}> RSRQ</Button>
-								<Button shape="round" size='medium' className={dataDisplayed==="SINR" ? "chip-btn sel" : "chip-btn"} onClick={()=>{seeGraphType('SINR')}}> SINR</Button>
-								<Button shape="round" size='medium' className={dataDisplayed==="CQI" ? "chip-btn sel" : "chip-btn"} onClick={()=>{seeGraphType('CQI')}}> CQI</Button>
+				<div className='card info'>
+					<Row>
+						<Col xs={{ span: 24}} md={{span:12}} lg={{ span: 8}}>
+							<Row>
+								<Col>Brand</Col>
+								<Col>Samsung</Col>
+							</Row>
+						</Col>
+						<Col xs={{ span: 24}} md={{span:12}} lg={{ span: 8}}>
+							<Row>
+								<Col>Brand</Col>
+								<Col>Samsung</Col>
+							</Row>
+						</Col>
+						<Col xs={{ span: 24}} md={{span:12}} lg={{ span: 8}}>
+							<Row>
+								<Col>Brand</Col>
+								<Col>Samsung</Col>
 							</Row>
 						</Col>
 					</Row>
 				</div>
-				{
-					dataDisplayed === 'applicationData'
-					?
+				<Card className='card'>
 					<div className='content'>
 						<Row >
-							<Col xs={{ span: 24}} lg={{ span: 18}}>
-								<span>Application Version</span>
-							</Col>
-						</Row>
-						<Row >
-							<Col xs={{ span: 24}} lg={{ span: 18}}>
+							<Col xs={{ span: 24}} lg={{ span: 24}}>
 								<Row >
-									<Button shape="round" size='small' onClick={()=>{seeSubGraphType('rtt')}} className={deviceDataDisplayed==="rtt" ? "chip-btn-sub  sel-sub" : "chip-btn-sub"}> Device RTT </Button>
-									<Button shape="round" size='small' onClick={()=>{seeSubGraphType('throughput')}} className={deviceDataDisplayed==="throughput" ? "chip-btn-sub sel-sub" : "chip-btn-sub"}> Throughput </Button>
+									<Button shape="round" size='medium' className={dataDisplayed==="applicationData" ? "chip-btn sel" : "chip-btn"} onClick={()=>{seeGraphType('applicationData')}}> Application Data</Button>
+									<Button shape="round" size='medium' className={dataDisplayed==="RSRQ" ? "chip-btn sel" : "chip-btn"} onClick={()=>{seeGraphType('RSRQ')}}> RSRQ</Button>
+									<Button shape="round" size='medium' className={dataDisplayed==="SINR" ? "chip-btn sel" : "chip-btn"} onClick={()=>{seeGraphType('SINR')}}> SINR</Button>
+									<Button shape="round" size='medium' className={dataDisplayed==="CQI" ? "chip-btn sel" : "chip-btn"} onClick={()=>{seeGraphType('CQI')}}> CQI</Button>
 								</Row>
 							</Col>
 						</Row>
 					</div>
-					:
-					''
-				}
-				<div className='content'>
-					<Chart
-						options={options}
-						series={series}
-						height={500}
-						type="line"
-					/>
-				</div>
+					{
+						dataDisplayed === 'applicationData'
+						?
+						<div className='content'>
+							<div className='divider'></div>
+							<Row >
+								<Col xs={{ span: 24}} lg={{ span: 4}}>
+									<h4>Application Version</h4>
+								</Col>
+								<Col xs={{ span: 24}} lg={{ span: 20}}>
+									<h4>v2.0.3</h4>
+								</Col>
+							</Row>
+							<Row >
+								<Col xs={{ span: 24}} lg={{ span: 18}}>
+									<Row >
+										<Button shape="round" size='small' onClick={()=>{seeSubGraphType('rtt')}} className={deviceDataDisplayed==="rtt" ? "chip-btn-sub  sel-sub" : "chip-btn-sub"}> Device RTT </Button>
+										<Button shape="round" size='small' onClick={()=>{seeSubGraphType('throughput')}} className={deviceDataDisplayed==="throughput" ? "chip-btn-sub sel-sub" : "chip-btn-sub"}> Throughput </Button>
+									</Row>
+								</Col>
+							</Row>
+						</div>
+						:
+						''
+					}
+					<div className='content'>
+						<Chart
+							options={options}
+							series={series}
+							height={500}
+							type="line"
+						/>
+					</div>
+				</Card>
 			</div>
 		</div>
 	)
