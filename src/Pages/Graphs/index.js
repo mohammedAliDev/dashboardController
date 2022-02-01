@@ -70,27 +70,27 @@ const Graphs = () => {
 
 	return (
 		<div className='container'>
-			<Card className='card'>
+			<Card className='card body'>
 				<h1 style={{textAlign:"center"}}>Device Location</h1>
 				<div className='content'>
 					<div className='card info'>
 						<Row >
 							<Col xs={{ span: 24}} md={{span:12}} lg={{ span: 8}}>
 								<Row>
-									<Col className='label' span={6} offset={1}>Brand</Col>
-									<Col span={12} offset={1}>{brandName}</Col>
+									<Col className='label' span={9} offset={1}>Brand</Col>
+									<Col span={13} offset={1}>{brandName}</Col>
 								</Row>
 							</Col>
 							<Col xs={{ span: 24}} md={{span:12}} lg={{ span: 8}}>
 								<Row>
-									<Col className='label' span={6} offset={1}>Model</Col>
-									<Col span={12} offset={1}>{modelName}</Col>
+									<Col className='label' span={9} offset={1}>Model</Col>
+									<Col span={13} offset={1}>{modelName}</Col>
 								</Row>
 							</Col>
 							<Col xs={{ span: 24}} md={{span:12}} lg={{ span: 8}}>
 								<Row>
-									<Col className='label' span={6} offset={1}>OS Version</Col>
-									<Col span={12} offset={1}>{osVersion}</Col>
+									<Col className='label' span={9} offset={1}>OS Version</Col>
+									<Col span={13} offset={1}>{osVersion}</Col>
 								</Row>
 							</Col>
 						</Row>
