@@ -70,77 +70,80 @@ const Graphs = () => {
 
 	return (
 		<div className='container'>
-			<div className='content'>
-				<div className='card info'>
-					<Row >
-						<Col xs={{ span: 24}} md={{span:12}} lg={{ span: 8}}>
-							<Row>
-								<Col className='label' span={5} offset={1}>Brand</Col>
-								<Col span={10} offset={1}>{brandName}</Col>
-							</Row>
-						</Col>
-						<Col xs={{ span: 24}} md={{span:12}} lg={{ span: 8}}>
-							<Row>
-								<Col className='label' span={5} offset={1}>Model</Col>
-								<Col span={10} offset={1}>{modelName}</Col>
-							</Row>
-						</Col>
-						<Col xs={{ span: 24}} md={{span:12}} lg={{ span: 8}}>
-							<Row>
-								<Col className='label' span={5} offset={1}>OS Version</Col>
-								<Col span={10} offset={1}>{osVersion}</Col>
-							</Row>
-						</Col>
-					</Row>
-				</div>
-				<Card className='card'>
-					<div className='content'>
+			<Card className='card'>
+				<h1 style={{textAlign:"center"}}>Device Location</h1>
+				<div className='content'>
+					<div className='card info'>
 						<Row >
-							<Col xs={{ span: 24}} lg={{ span: 24}}>
-								<Row >
-									<Button shape="round" size='medium' className={dataDisplayed==="applicationData" ? "chip-btn sel" : "chip-btn"} onClick={()=>{seeGraphType('applicationData')}}> Application Data</Button>
-									<Button shape="round" size='medium' className={dataDisplayed==="RSRQ" ? "chip-btn sel" : "chip-btn"} onClick={()=>{seeGraphType('RSRQ')}}> RSRQ</Button>
-									<Button shape="round" size='medium' className={dataDisplayed==="SINR" ? "chip-btn sel" : "chip-btn"} onClick={()=>{seeGraphType('SINR')}}> SINR</Button>
-									<Button shape="round" size='medium' className={dataDisplayed==="CQI" ? "chip-btn sel" : "chip-btn"} onClick={()=>{seeGraphType('CQI')}}> CQI</Button>
+							<Col xs={{ span: 24}} md={{span:12}} lg={{ span: 8}}>
+								<Row>
+									<Col className='label' span={6} offset={1}>Brand</Col>
+									<Col span={12} offset={1}>{brandName}</Col>
+								</Row>
+							</Col>
+							<Col xs={{ span: 24}} md={{span:12}} lg={{ span: 8}}>
+								<Row>
+									<Col className='label' span={6} offset={1}>Model</Col>
+									<Col span={12} offset={1}>{modelName}</Col>
+								</Row>
+							</Col>
+							<Col xs={{ span: 24}} md={{span:12}} lg={{ span: 8}}>
+								<Row>
+									<Col className='label' span={6} offset={1}>OS Version</Col>
+									<Col span={12} offset={1}>{osVersion}</Col>
 								</Row>
 							</Col>
 						</Row>
 					</div>
-					{
-						dataDisplayed === 'applicationData'
-						?
+					<Card className='card'>
 						<div className='content'>
-							<div className='divider'></div>
-							<Row className='content'>
-								<Col xs={{ span: 24}} lg={{ span: 4}}>
-									<span className='label'>Application Version</span>
-								</Col>
-								<Col xs={{ span: 24}} lg={{ span: 20}}>
-									<span>24</span>
-								</Col>
-							</Row>
 							<Row >
-								<Col xs={{ span: 24}} lg={{ span: 18}}>
+								<Col xs={{ span: 24}} lg={{ span: 24}}>
 									<Row >
-										<Button shape="round" size='small' onClick={()=>{seeSubGraphType('RTT')}} className={deviceDataDisplayed==="RTT" ? "chip-btn-sub  sel-sub" : "chip-btn-sub"}> Device RTT </Button>
-										<Button shape="round" size='small' onClick={()=>{seeSubGraphType('Throughput')}} className={deviceDataDisplayed==="Throughput" ? "chip-btn-sub sel-sub" : "chip-btn-sub"}> Throughput </Button>
+										<Button shape="round" size='medium' className={dataDisplayed==="applicationData" ? "chip-btn sel" : "chip-btn"} onClick={()=>{seeGraphType('applicationData')}}> Application Data</Button>
+										<Button shape="round" size='medium' className={dataDisplayed==="RSRQ" ? "chip-btn sel" : "chip-btn"} onClick={()=>{seeGraphType('RSRQ')}}> RSRQ</Button>
+										<Button shape="round" size='medium' className={dataDisplayed==="SINR" ? "chip-btn sel" : "chip-btn"} onClick={()=>{seeGraphType('SINR')}}> SINR</Button>
+										<Button shape="round" size='medium' className={dataDisplayed==="CQI" ? "chip-btn sel" : "chip-btn"} onClick={()=>{seeGraphType('CQI')}}> CQI</Button>
 									</Row>
 								</Col>
 							</Row>
+							<div className='divider'></div>
 						</div>
-						:
-						''
-					}
-					<div className='content'>
-						<Chart
-							options={options}
-							series={series}
-							height={500}
-							type="line"
-						/>
-					</div>
-				</Card>
-			</div>
+						{
+							dataDisplayed === 'applicationData'
+							?
+							<div >
+								<Row className='content'>
+									<Col xs={{ span: 24}} lg={{ span: 4}}>
+										<span className='label'>Application Version</span>
+									</Col>
+									<Col xs={{ span: 24}} lg={{ span: 20}}>
+										<span>24</span>
+									</Col>
+								</Row>
+								<Row >
+									<Col xs={{ span: 24}} lg={{ span: 18}}>
+										<Row >
+											<Button shape="round" size='small' onClick={()=>{seeSubGraphType('RTT')}} className={deviceDataDisplayed==="RTT" ? "chip-btn-sub  sel-sub" : "chip-btn-sub"}> Device RTT </Button>
+											<Button shape="round" size='small' onClick={()=>{seeSubGraphType('Throughput')}} className={deviceDataDisplayed==="Throughput" ? "chip-btn-sub sel-sub" : "chip-btn-sub"}> Throughput </Button>
+										</Row>
+									</Col>
+								</Row>
+							</div>
+							:
+							''
+						}
+						<div className='content'>
+							<Chart
+								options={options}
+								series={series}
+								height={500}
+								type="line"
+							/>
+						</div>
+					</Card>
+				</div>
+			</Card>
 		</div>
 	)
 };
