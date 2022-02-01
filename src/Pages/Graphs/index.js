@@ -3,8 +3,9 @@ import Chart from "react-apexcharts";
 import './graphs.css';
 import { Card,Row,Col, Button } from 'antd';
 import 'antd/dist/antd.css';
+import DeviceInfo from '../../Components/DeviceInfo';
 
-const Graphs = () => {
+const Graphs = (props) => {
 	const [dataDisplayed, setDataDisplayed] = useState('applicationData');
 	const [deviceDataDisplayed, setDeviceDataDisplayed] = useState('RTT');
 	const brandName = "Samsung";
@@ -73,28 +74,7 @@ const Graphs = () => {
 			<Card className='card body'>
 				<h1 style={{textAlign:"center"}}>Device Location</h1>
 				<div className='content'>
-					<div className='card info'>
-						<Row >
-							<Col xs={{ span: 24}} md={{span:12}} lg={{ span: 8}}>
-								<Row>
-									<Col className='label' span={9} offset={1}>Brand</Col>
-									<Col span={13} offset={1}>{brandName}</Col>
-								</Row>
-							</Col>
-							<Col xs={{ span: 24}} md={{span:12}} lg={{ span: 8}}>
-								<Row>
-									<Col className='label' span={9} offset={1}>Model</Col>
-									<Col span={13} offset={1}>{modelName}</Col>
-								</Row>
-							</Col>
-							<Col xs={{ span: 24}} md={{span:12}} lg={{ span: 8}}>
-								<Row>
-									<Col className='label' span={9} offset={1}>OS Version</Col>
-									<Col span={13} offset={1}>{osVersion}</Col>
-								</Row>
-							</Col>
-						</Row>
-					</div>
+					<DeviceInfo brand={brandName} model={modelName} os={osVersion}/>
 					<Card className='card'>
 						<div className='content'>
 							<Row >
