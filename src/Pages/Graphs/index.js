@@ -6,7 +6,7 @@ import 'antd/dist/antd.css';
 
 const Graphs = () => {
 	const [dataDisplayed, setDataDisplayed] = useState('applicationData');
-	const [deviceDataDisplayed, setDeviceDataDisplayed] = useState('rtt');
+	const [deviceDataDisplayed, setDeviceDataDisplayed] = useState('RTT');
 	const brandName = "Samsung";
 	const modelName = "Galaxy S Duos";
 	const osVersion = 10;
@@ -39,7 +39,7 @@ const Graphs = () => {
 		},
 	},
 	title: {
-	text: 'Dummy Chart',
+	text: dataDisplayed === 'applicationData'?deviceDataDisplayed:dataDisplayed,
 	align: 'center'
 	},
 	markers: {
@@ -122,8 +122,8 @@ const Graphs = () => {
 							<Row >
 								<Col xs={{ span: 24}} lg={{ span: 18}}>
 									<Row >
-										<Button shape="round" size='small' onClick={()=>{seeSubGraphType('rtt')}} className={deviceDataDisplayed==="rtt" ? "chip-btn-sub  sel-sub" : "chip-btn-sub"}> Device RTT </Button>
-										<Button shape="round" size='small' onClick={()=>{seeSubGraphType('throughput')}} className={deviceDataDisplayed==="throughput" ? "chip-btn-sub sel-sub" : "chip-btn-sub"}> Throughput </Button>
+										<Button shape="round" size='small' onClick={()=>{seeSubGraphType('RTT')}} className={deviceDataDisplayed==="RTT" ? "chip-btn-sub  sel-sub" : "chip-btn-sub"}> Device RTT </Button>
+										<Button shape="round" size='small' onClick={()=>{seeSubGraphType('Throughput')}} className={deviceDataDisplayed==="Throughput" ? "chip-btn-sub sel-sub" : "chip-btn-sub"}> Throughput </Button>
 									</Row>
 								</Col>
 							</Row>
