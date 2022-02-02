@@ -9,3 +9,8 @@ tr {
 .leftAlign {
 	text-align: left;
 }
+
+.custom-icon {
+	background: transparent;
+	border: none;
+}
