@@ -14,18 +14,33 @@ const Graphs = (props) => {
 		modelName:'Galaxy S Duos',
 		osVersion:'10'
 	}
-	const defaultSeries=[
+	const CQISeries=[
 		{
-			name: "series-1",
+			name: "CQI",
 			data: [52, 40, 45, 50, 49, 30, 36, 12, 52, 40, 45, 50, 49, 30, 30, 18, 52, 40, 45, 50, 49, 30, 31, 27, 50, 49, 30, 45, 59, 52, 40, 45, 4]
-		},
-		{
-			name: "series-2",
-			data: [45, 59, 52, 40, 45, 50, 49, 30, 45, 52, 40, 45, 50, 49, 10, 62, 59, 52, 40, 45, 50, 49, 10, 53, 59, 50, 49, 30, 39, 67, 52, 40, 45]
 		}
-		];
+	];
+	const SINRSeries=[
+		{
+			name: "SINR",
+			data: [52, 40, 45, 80, 49, 30, 36, 19, 52, 53, 45, 20, 49, 31, 40, 18, 52, 40, 45, 90, 19, 40, 11, 27, 30, 25, 30, 45, 59, 52, 44]
+		}
+	];
+	const RSRQSeries=[
+		{
+			name: "RSRQ",
+			data: [52, 40, 45, 50, 49, 19, 36, 12, 5, 33, 45, 50, 40, 29, 19, 18, 52, 40, 45, 50, 49, 19, 31, 27, 50, 49, 30, 41, 5, 5, 40, 35]
+		}
+	];
+	const RSRPSeries=[
+		{
+			name: "RSRP",
+			data: [52, 40, 45, 50, 49, 30, 36, 12, 52, 40, 40, 50, 49, 30, 45, 50, 49, 30, 20, 18, 52, 40, 45, 50, 49, 30, 31, 24]
+		}
+	];
+
 	const [deviceInfo,setDeviceInfo] = useState(devInfo)
-	const [series,setSeries] = useState(defaultSeries)
+	const [series,setSeries] = useState(CQISeries)
 	const options = {
 	chart: {
 		id: "line",
@@ -76,7 +91,20 @@ const Graphs = (props) => {
 
 	const seeGraphType = (value) =>{
 		setDataDisplayed(value)
-		console.log("viewing ", value)
+		switch(value)
+		{
+			case 'CQI': setSeries(CQISeries);
+						break;
+			case 'RSRQ': setSeries(RSRQSeries);
+						break;
+			case 'RSRP': setSeries(RSRPSeries);
+						break;
+			case 'SINR': setSeries(SINRSeries);
+						break;
+			case 'applicationData': setSeries(RSRQSeries);
+						break;
+		}
+		
 	}
 	const seeSubGraphType = (value) =>{
 		setDeviceDataDisplayed(value)
