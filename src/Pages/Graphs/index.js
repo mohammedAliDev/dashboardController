@@ -26,6 +26,12 @@ const Graphs = (props) => {
 			data: [52, 40, 45, 80, 49, 30, 36, 19, 52, 53, 45, 20, 49, 31, 40, 18, 52, 40, 45, 90, 19, 40, 11, 27, 30, 25, 30, 45, 59, 52, 44]
 		}
 	];
+	const appDataSeries=[
+		{
+			name: "SINR",
+			data: [52, 40, 45, 80, 49, 30, 36,30, 36, 19, 52, 53, 45,49, 31, 40, 49, 31, 40, 52, 53, 45 , 49, 52, 53, 45 , 31, 40, 18, 20, 49, 31, 45 , 49, 52, 53, 40, 18, 52, 40, 45, 52, 40, 45, 49, 31, 40,49, 31, 40,52, 40,45, 49, 31, 40,49, 31, 40,52, 40, 45,52, 40, 45, 90, 19, 40, 11, 27, 30, 25, 30, 45, 59, 52, 44]
+		}
+	];
 	const RSRQSeries=[
 		{
 			name: "RSRQ",
@@ -101,7 +107,7 @@ const Graphs = (props) => {
 						break;
 			case 'SINR': setSeries(SINRSeries);
 						break;
-			case 'applicationData': setSeries(RSRQSeries);
+			case 'applicationData': setSeries(appDataSeries);
 						break;
 		}
 		
@@ -114,7 +120,6 @@ const Graphs = (props) => {
 	return (
 		<div className='container'>
 			<Card className='card body'>
-				<h1 style={{textAlign:"center"}}>Device Location</h1>
 				<div className='content'>
 					<DeviceInfo brand={deviceInfo.brandName} model={deviceInfo.modelName} os={deviceInfo.osVersion}/>
 					<Card className='card'>
