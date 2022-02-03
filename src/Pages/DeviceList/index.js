@@ -3,9 +3,12 @@ import './deviceList.css';
 import { Card,Row,Col, Button } from 'antd';
 import 'antd/dist/antd.css';
 import {useLocation} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import iOS from './img/ios.svg';
 import android from './img/android.svg';
 const DeviceList = (props) => {
+	
+	const navigate = useNavigate();
 	const list = [
 		{
 			name:'XYZ',
@@ -84,11 +87,13 @@ const DeviceList = (props) => {
 								<Row >
 									{list.map((item)=>{
 										return(
-											<Col style={{paddingLeft:20, margin:'2px 0px'}} span={8}>
-												{item.OS === 'ios'?
-													<img src={iOS} height={24}/>:
-													<img src={android} height={24}/>}
-												&nbsp;&nbsp;{item.name}
+											<Col style={{paddingLeft:20, margin:'5px 0px'}} span={8}>
+												<div style={{cursor:'pointer'}}  onClick={(e)=>{navigate('/graphs')}}>
+													{item.OS === 'ios'?
+														<img src={iOS} height={22}/>:
+														<img src={android} height={22}/>}
+													&nbsp;&nbsp;{item.name}
+												</div>
 											</Col>
 										)
 									})}
