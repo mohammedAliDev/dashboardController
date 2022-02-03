@@ -3,7 +3,7 @@ import Chart from "react-apexcharts";
 import './graphs.css';
 import { Card,Row,Col, Button } from 'antd';
 import 'antd/dist/antd.css';
-import DeviceInfo from '../../Components/DeviceInfo';
+import DeviceInfo from '../../Components/DeviceInfoHeader/DeviceInfo';
 
 const Graphs = (props) => {
 	const [dataDisplayed, setDataDisplayed] = useState('applicationData');
