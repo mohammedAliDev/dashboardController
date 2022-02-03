@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import './deviceList.css';
-import { Card,Row,Col, Button } from 'antd';
+import { Card, Row, Col, Button } from 'antd';
 import 'antd/dist/antd.css';
-import {useLocation} from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 const DeviceList = (props) => {
-	
 	const location = useLocation();
 	// functions
-	console.log(location.state)
+	console.log(location.state);
 	return (
 		<div>
 			<div className='content'>
@@ -19,15 +18,12 @@ const DeviceList = (props) => {
 			<div className='content'>
 				<Row justify='center'>
 					<Col span={24}>
-						<Card className='card'>
-							device list {location.state}
-						</Card>
+						<Card className='card'>device list {location.state.data}</Card>
 					</Col>
-					
 				</Row>
 			</div>
 		</div>
-	)
+	);
 };
 
 export default DeviceList;
