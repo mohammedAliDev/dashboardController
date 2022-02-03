@@ -4,14 +4,14 @@ import { data } from '../../utils/data';
 import L from 'leaflet';
 import './dashboard.css';
 import { useNavigate } from 'react-router-dom';
-import { Row,Col} from 'antd';
+import { Row, Col } from 'antd';
 import { getRequiredSVGPinByCategory } from '../../utils';
 import { Select } from 'antd';
 const { Option } = Select;
 
 const handleChange = (value) => {
-  console.log(`selected ${value}`);
-}
+	console.log(`selected ${value}`);
+};
 
 delete L.Icon.Default.prototype._getIconUrl;
 
@@ -28,27 +28,31 @@ L.Icon.Default.mergeOptions({
 const Dashboard = () => {
 	const position = [32.962171, -96.710217];
 	const [counts, setCounts] = useState(0);
-	const [view,setView] = useState('live');
+	const [view, setView] = useState('live');
 	const navigate = useNavigate();
 	const { Option } = Select;
 	const handleChange = (value) => {
 		setView(value);
-	}
+	};
 	return (
 		<>
 			<div>
-				<Row className='content' >
-					<Col xs={{ span: 12}} lg={{ span: 12}}>
+				<Row className='content'>
+					<Col xs={{ span: 12 }} lg={{ span: 12 }}>
 						<h4>Geo Map View</h4>
 					</Col>
-					<Col xs={{ span: 12}} lg={{ span: 12}}>
-						<Select defaultValue="live" style={{ width: '100%' }} onChange={handleChange}>
-							<Option value="mobility">Mobility</Option>
-							<Option value="live">Live</Option>
+					<Col xs={{ span: 12 }} lg={{ span: 12 }}>
+						<Select
+							defaultValue='live'
+							style={{ width: '100%' }}
+							onChange={handleChange}
+						>
+							<Option value='mobility'>Mobility</Option>
+							<Option value='live'>Live</Option>
 						</Select>
 					</Col>
 				</Row>
-					
+
 				<Map
 					style={{ height: '100vh' }}
 					center={[
@@ -69,7 +73,7 @@ const Dashboard = () => {
 							]}
 							// icon={getRequiredSVGPinByCategory({ fill: 'blue' })}
 							onClick={(e) => {
-								navigate('/device-list',{data:'hello'});
+								navigate('/device-list', { state: { data: 'hello' } });
 								// navigate('/graphs');
 							}}
 							onMouseOver={(e) => {

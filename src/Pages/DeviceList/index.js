@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import './deviceList.css';
-import { Card,Row,Col, Button } from 'antd';
+import { Card, Row, Col, Button } from 'antd';
 import 'antd/dist/antd.css';
+<<<<<<< HEAD
 import {useLocation} from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import iOS from './img/ios.svg';
@@ -66,9 +67,14 @@ const DeviceList = (props) => {
 			network:'4G'
 		},
 	];
+=======
+import { useLocation } from 'react-router-dom';
+
+const DeviceList = (props) => {
+>>>>>>> e3ad8e07d07570bc0511c7f3a68191cc14fcf6b3
 	const location = useLocation();
 	// functions
-	console.log(location.state)
+	console.log(location.state);
 	return (
 		<div>
 			<div className='content'>
@@ -101,11 +107,10 @@ const DeviceList = (props) => {
 							</div>
 						</Card>
 					</Col>
-					
 				</Row>
 			</div>
 		</div>
-	)
+	);
 };
 
 export default DeviceList;
