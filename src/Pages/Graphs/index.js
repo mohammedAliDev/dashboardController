@@ -29,7 +29,7 @@ const Graphs = (props) => {
 	const appDataSeries=[
 		{
 			name: "appdata",
-			data: [52, 40, 45, 80, 49, 30, 36,30, 36, 19, 52, 53, 45,49, 31, 40, 49, 31, 40, 52, 53, 45 , 49, 52, 53, 45 , 31, 40, 18, 20, 49, 31, 45 , 49, 52, 53, 40, 18, 52, 40, 45, 52, 40, 45, 49, 31, 40,49, 31, 40,52, 40,45, 49, 31, 40,49, 31, 40,52, 40, 45,52, 40, 45, 90, 19, 40, 11, 27, 30, 25, 30, 45, 59, 52, 44]
+			data: [40, 45, 80, 46, 19, 52, 53, 45, 80, 49, 30, 36, 19, 52, 49, 31 ,49, 31, 40, 52, 40,45, 25, 30, 45, 59, 52, 44]
 		}
 	];
 	const RSRQSeries=[
@@ -57,7 +57,7 @@ const Graphs = (props) => {
 		y1: 10,y2: 15,y3: 24,y4: 39,y5: 50
 	};
 	const [deviceInfo,setDeviceInfo] = useState(devInfo)
-	const [series,setSeries] = useState(CQISeries)
+	const [series,setSeries] = useState(appDataSeries)
 	const [legendLevels, setLegendLevels] = useState({y1:0,y2:0,y3:0,y4:0,y5:0})
 	const optionsLine = {
 	chart: {
@@ -79,6 +79,7 @@ const Graphs = (props) => {
 		background: '#eee7e7'
 	},
 	annotations: {
+		position: 'front' ,
 		yaxis: [{
 		y: legendLevels.y1,
 		y2: legendLevels.y2,
@@ -186,6 +187,7 @@ const Graphs = (props) => {
 			},
 			background: '#eee7e7'
 		},
+		annotations: {},
 		title: {
 		text: deviceDataDisplayed,
 		align: 'center'
@@ -217,6 +219,7 @@ const Graphs = (props) => {
 
 	const seeGraphType = (value) =>{
 		setDataDisplayed(value)
+		console.log("viewing ", value)
 		switch(value)
 		{
 			case 'CQI': setSeries(CQISeries);
@@ -232,12 +235,14 @@ const Graphs = (props) => {
 						setLegendLevels(RSRPLevels);
 						break;
 			case 'applicationData': setSeries(appDataSeries);
+						setLegendLevels({y1:0,y2:0,y3:0,y4:0,y5:0})
 						break;
 		}
 		
 	}
 	const seeSubGraphType = (value) =>{
 		setDeviceDataDisplayed(value)
+		setSeries(appDataSeries)
 		console.log("viewing ", value)
 	}
 
@@ -285,12 +290,21 @@ const Graphs = (props) => {
 							''
 						}
 						<div className='content'>
+						{dataDisplayed==="applicationData"?
 							<Chart
-								options={dataDisplayed==="applicationData"?optionsArea:optionsLine}
+								options={optionsArea}
 								series={series}
 								height={500}
-								type={dataDisplayed==="applicationData"?'area':'line'}
+								type='area'
 							/>
+							:
+							<Chart
+								options={optionsLine}
+								series={series}
+								height={500}
+								type='line'
+							/>
+						}
 						</div>
 					</Card>
 				</div>
