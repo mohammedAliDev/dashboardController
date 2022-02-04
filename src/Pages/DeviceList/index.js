@@ -68,7 +68,7 @@ const DeviceList = (props) => {
 	];
 	const location = useLocation();
 	// functions
-	console.log(location.state);
+	console.log(location.state.view);
 	return (
 		<div>
 			<div className='content'>

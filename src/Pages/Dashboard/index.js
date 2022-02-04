@@ -38,10 +38,10 @@ const Dashboard = () => {
 		<>
 			<div>
 				<Row className='content'>
-					<Col xs={{ span: 12 }} lg={{ span: 12 }}>
+					<Col xs={{ span: 16 }} lg={{ span: 16 }}>
 						<h4>Geo Map View</h4>
 					</Col>
-					<Col xs={{ span: 12 }} lg={{ span: 12 }}>
+					<Col xs={{ span: 8 }} lg={{ span: 8 }}>
 						<Select
 							defaultValue='live'
 							style={{ width: '100%' }}
@@ -73,7 +73,7 @@ const Dashboard = () => {
 							]}
 							// icon={getRequiredSVGPinByCategory({ fill: 'blue' })}
 							onClick={(e) => {
-								navigate('/device-list', { state: { data: 'hello' } });
+								navigate('/device-list', { state: { view:view} });
 								// navigate('/graphs');
 							}}
 							onMouseOver={(e) => {
