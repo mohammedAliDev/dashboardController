@@ -141,10 +141,10 @@ const Graphs = (props) => {
 							?
 							<div >
 								<Row className='content'>
-									<Col xs={{ span: 24}} lg={{ span: 4}}>
+									<Col xs={{ span: 12}} lg={{ span: 4}}>
 										<span className='label'>Application Version</span>
 									</Col>
-									<Col xs={{ span: 24}} lg={{ span: 20}}>
+									<Col xs={{ span: 12}} lg={{ span: 20}}>
 										<span>{appVersion}</span>
 									</Col>
 								</Row>
