@@ -28,7 +28,7 @@ const Graphs = (props) => {
 	];
 	const appDataSeries=[
 		{
-			name: "SINR",
+			name: "appdata",
 			data: [52, 40, 45, 80, 49, 30, 36,30, 36, 19, 52, 53, 45,49, 31, 40, 49, 31, 40, 52, 53, 45 , 49, 52, 53, 45 , 31, 40, 18, 20, 49, 31, 45 , 49, 52, 53, 40, 18, 52, 40, 45, 52, 40, 45, 49, 31, 40,49, 31, 40,52, 40,45, 49, 31, 40,49, 31, 40,52, 40, 45,52, 40, 45, 90, 19, 40, 11, 27, 30, 25, 30, 45, 59, 52, 44]
 		}
 	];
@@ -44,10 +44,22 @@ const Graphs = (props) => {
 			data: [52, 40, 45, 50, 49, 30, 36, 12, 52, 40, 40, 50, 49, 30, 45, 50, 49, 30, 20, 18, 52, 40, 45, 50, 49, 30, 31, 24]
 		}
 	];
-
+	const SINRLevels = {
+		y1: 10,y2: 15,y3: 24,y4: 39,y5: 50
+	};
+	const CQILevels = {
+		y1: 10,y2: 15,y3: 24,y4: 39,y5: 50
+	};
+	const RSRPLevels = {
+		y1: 10,y2: 15,y3: 24,y4: 39,y5: 50
+	};
+	const RSRQLevels = {
+		y1: 10,y2: 15,y3: 24,y4: 39,y5: 50
+	};
 	const [deviceInfo,setDeviceInfo] = useState(devInfo)
 	const [series,setSeries] = useState(CQISeries)
-	const options = {
+	const [legendLevels, setLegendLevels] = useState({y1:0,y2:0,y3:0,y4:0,y5:0})
+	const optionsLine = {
 	chart: {
 		id: "line",
 		toolbar: {
@@ -64,6 +76,69 @@ const Graphs = (props) => {
 			},
 			autoSelected: 'pan'
 		},
+		background: '#eee7e7'
+	},
+	annotations: {
+		yaxis: [{
+		y: legendLevels.y1,
+		y2: legendLevels.y2,
+		fillColor: '#ff8585',
+		opacity: 0.2,
+		label: {
+		  borderColor: '#333',
+		  style: {
+			fontSize: '10px',
+			color: '#333',
+			background: '#ff8585',
+		  },
+		  text: 'Poor',
+		}
+	  },
+	  {
+		y: legendLevels.y2,
+		y2: legendLevels.y3,
+		fillColor: '#faff74',
+		opacity: 0.2,
+		label: {
+		  borderColor: '#d2d2d2',
+		  style: {
+			fontSize: '10px',
+			color: '#333',
+			background: '#faff74',
+		  },
+		  text: 'Average',
+		}
+	  },
+	  {
+		y: legendLevels.y3,
+		y2: legendLevels.y4,
+		fillColor: '#a1d5ff',
+		opacity: 0.2,
+		label: {
+		  borderColor: '#333',
+		  style: {
+			fontSize: '10px',
+			color: '#333',
+			background: '#a1d5ff',
+		  },
+		  text: 'Good',
+		}
+	  },
+	  {
+		y: legendLevels.y4,
+		y2: legendLevels.y5,
+		fillColor: '#91ffb8',
+		opacity: 0.2,
+		label: {
+		  borderColor: '#333',
+		  style: {
+			fontSize: '10px',
+			color: '#333',
+			background: '#91ffb8',
+		  },
+		  text: 'Excellent',
+		}
+	  }]
 	},
 	title: {
 	text: dataDisplayed === 'applicationData'?deviceDataDisplayed:dataDisplayed,
@@ -79,20 +154,65 @@ const Graphs = (props) => {
 		dashArray: 0,      
 	},
 	markers: {
-        size: 0,
+        size: 4,
         strokeColor: "#fff",
         strokeWidth: 1,
-        strokeOpacity: 6,
-        fillOpacity: 1,
+        strokeOpacity: 2,
+        fillOpacity: 5,
         hover: {
-          size: 5
+          size: 6
         }
       },
 	xaxis: {
 		categories: [1972, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,1972, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,1972, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,1972, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999]
 	}
 	};
-
+	const optionsArea = {
+		chart: {
+			id: "area",
+			toolbar: {
+			show: true,
+			offsetX: 0,
+			offsetY: 0,
+			tools: {
+					download: false,
+					selection: false,
+					zoom: false,
+					zoomin: true,
+					zoomout: true,
+					pan: true,
+				},
+				autoSelected: 'pan'
+			},
+			background: '#eee7e7'
+		},
+		title: {
+		text: deviceDataDisplayed,
+		align: 'center'
+		},
+		dataLabels:{
+			enabled:false
+		},
+		stroke: {
+			show: true,
+			curve:'straight',
+			width: 5,
+			dashArray: 0,      
+		},
+		markers: {
+			size: 0,
+			strokeColor: "#fff",
+			strokeWidth: 1,
+			strokeOpacity: 2,
+			fillOpacity: 5,
+			hover: {
+			  size: 5
+			}
+		  },
+		xaxis: {
+			categories: [1972, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,1972, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,1972, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,1972, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999]
+		}
+		};
 	// functions
 
 	const seeGraphType = (value) =>{
@@ -100,12 +220,16 @@ const Graphs = (props) => {
 		switch(value)
 		{
 			case 'CQI': setSeries(CQISeries);
+						setLegendLevels(CQILevels);
 						break;
 			case 'RSRQ': setSeries(RSRQSeries);
+						setLegendLevels(RSRQLevels);		
 						break;
 			case 'RSRP': setSeries(RSRPSeries);
+						setLegendLevels(RSRPLevels);		
 						break;
 			case 'SINR': setSeries(SINRSeries);
+						setLegendLevels(RSRPLevels);
 						break;
 			case 'applicationData': setSeries(appDataSeries);
 						break;
@@ -162,7 +286,7 @@ const Graphs = (props) => {
 						}
 						<div className='content'>
 							<Chart
-								options={options}
+								options={dataDisplayed==="applicationData"?optionsArea:optionsLine}
 								series={series}
 								height={500}
 								type={dataDisplayed==="applicationData"?'area':'line'}
