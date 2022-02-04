@@ -50,3 +50,46 @@
 .body{
     background-color: #f7efe3 !important;
 }
+
+.styleTrendLines {
+    display: flex;
+    float: right;
+    z-index: 999;
+    position: absolute;
+    margin-left: 50%;
+    margin-top: 28px;
+  }
+  .excellent {
+    display: flex;
+  }
+  .excellent > span,
+  .avg > span {
+    font-size: 14px;
+  }
+  .avg {
+    display: flex;
+    margin-left: 15px;
+  }
+  .circle {
+    width: 13px;
+    height: 13px;
+    border-radius: 3px;
+    margin-right: 5px;
+    margin-top: 3px;
+  }
+  .greenCircle {
+    background-color: #91ffb8;
+    border: 1px solid #91ffb8;
+  }
+  .blueCircle {
+    background-color: #a1d5ff;
+    border: 1px solid #a1d5ff;
+  }
+  .yellowCircle {
+    background-color: #faff74;
+    border: 1px solid #faff74;
+  }
+  .redCircle {
+    background-color: #ff8585;
+    border: 1px solid #ff8585;
+  }

@@ -85,65 +85,56 @@ const Graphs = (props) => {
 		y2: legendLevels.y2,
 		fillColor: '#ff8585',
 		opacity: 0.2,
-		label: {
-		  borderColor: '#333',
-		  style: {
-			fontSize: '10px',
-			color: '#333',
-			background: '#ff8585',
-		  },
-		  text: 'Poor',
-		}
+		// label: {
+		//   borderColor: '#333',
+		//   style: {
+		// 	fontSize: '10px',
+		// 	color: '#333',
+		// 	background: '#ff8585',
+		//   },
+		//   text: 'Poor',
+		// }
 	  },
 	  {
 		y: legendLevels.y2,
 		y2: legendLevels.y3,
 		fillColor: '#faff74',
 		opacity: 0.2,
-		label: {
-		  borderColor: '#d2d2d2',
-		  style: {
-			fontSize: '10px',
-			color: '#333',
-			background: '#faff74',
-		  },
-		  text: 'Average',
-		}
+		// label: {
+		//   borderColor: '#d2d2d2',
+		//   style: {
+		// 	fontSize: '10px',
+		// 	color: '#333',
+		// 	background: '#faff74',
+		//   },
+		//   text: 'Average',
+		// }
 	  },
 	  {
 		y: legendLevels.y3,
 		y2: legendLevels.y4,
 		fillColor: '#a1d5ff',
 		opacity: 0.2,
-		label: {
-		  borderColor: '#333',
-		  style: {
-			fontSize: '10px',
-			color: '#333',
-			background: '#a1d5ff',
-		  },
-		  text: 'Good',
-		}
+		// label: {
+		//   borderColor: '#333',
+		//   style: {
+		// 	fontSize: '10px',
+		// 	color: '#333',
+		// 	background: '#a1d5ff',
+		//   },
+		//   text: 'Good',
+		// }
 	  },
 	  {
 		y: legendLevels.y4,
 		y2: legendLevels.y5,
 		fillColor: '#91ffb8',
 		opacity: 0.2,
-		label: {
-		  borderColor: '#333',
-		  style: {
-			fontSize: '10px',
-			color: '#333',
-			background: '#91ffb8',
-		  },
-		  text: 'Excellent',
-		}
 	  }]
 	},
 	title: {
 	text: dataDisplayed === 'applicationData'?deviceDataDisplayed:dataDisplayed,
-	align: 'center'
+	align: 'left'
 	},
 	dataLabels:{
 		enabled:false
@@ -291,19 +282,41 @@ const Graphs = (props) => {
 						}
 						<div className='content'>
 						{dataDisplayed==="applicationData"?
-							<Chart
+							<div>
+								<Chart
 								options={optionsArea}
 								series={series}
 								height={500}
 								type='area'
 							/>
+							</div>
 							:
-							<Chart
-								options={optionsLine}
-								series={series}
-								height={500}
-								type='line'
-							/>
+							<div>
+								<div class="styleTrendLines">
+									<div class="excellent">
+										<div class="circle greenCircle" />
+										<span>Excellent</span>
+									</div>
+									<div class="avg">
+										<div class="circle blueCircle" />
+										<span>Good</span>
+									</div>
+									<div class="avg">
+										<div class="circle yellowCircle" />
+										<span>Average</span>
+									</div>
+									<div class="avg">
+										<div class="circle redCircle" />
+										<span>Poor</span>
+									</div>
+								</div>
+								<Chart
+									options={optionsLine}
+									series={series}
+									height={500}
+									type='line'
+								/>
+							</div>
 						}
 						</div>
 					</Card>
