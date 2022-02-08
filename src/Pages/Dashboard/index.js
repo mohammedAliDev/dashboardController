@@ -4,7 +4,7 @@ import { data } from '../../utils/data';
 import L from 'leaflet';
 import './dashboard.css';
 import { useNavigate } from 'react-router-dom';
-import { Row, Col } from 'antd';
+import { Row, Col, Button } from 'antd';
 import { getRequiredSVGPinByCategory } from '../../utils';
 import { Select } from 'antd';
 import _ from 'lodash';
@@ -123,33 +123,23 @@ const Dashboard = () => {
 	const navigate = useNavigate();
 	const { Option } = Select;
 
-	useEffect(() => {
+	const checkObject = () => {
 		var arr = [];
-		data.forEach((obj) => {
-			var result = checkObject(obj, arr);
-			if (!result) {
-				arr.push({
-					'Longitude of Connected Radio': obj['Longitude of Connected Radio'],
-					'Latitude of Connected Radio': obj['Latitude of Connected Radio'],
-				});
-			}
+		const unique = [
+			...new Set(data.map((item) => item['Longitude of Connected Radio'])),
+		];
+		const unique1 = [
+			...new Set(data.map((item) => item['Latitude of Connected Radio'])),
+		];
+		unique.concat(unique1).forEach((obj, idx) => {
+			console.log(obj);
+			// arr.push({
+			// 	'Longitude of Connected Radio':
+			// })
 		});
 		setDeviceLocations(arr);
-	}, []);
-
-	useEffect(() => {
-		console.log(deviceLocations);
-	}, [deviceLocations]);
-
-	const checkObject = (obj, arr) => {
-		const result = arr.filter(
-			(d) =>
-				d['Longitude of Connected Radio'] ===
-					obj['Longitude of Connected Radio'] &&
-				d['Latitude of Connected Radio'] === obj['Latitude of Connected Radio'],
-		);
-		return Boolean(result.length);
 	};
+
 	const handleChange = (value) => {
 		setView(value);
 	};
@@ -172,12 +162,12 @@ const Dashboard = () => {
 						</Select>
 					</Col>
 				</Row>
-
+				<Button onClick={() => checkObject()}>Click here</Button>
 				<Map
 					style={{ height: '100vh' }}
 					center={[
-						data[counts]['Latitude of Connected Radio'],
-						data[counts]['Longitude of Connected Radio'],
+						data1[counts]['Latitude of Connected Radio'],
+						data1[counts]['Longitude of Connected Radio'],
 					]}
 					zoom={6}
 				>
@@ -185,7 +175,7 @@ const Dashboard = () => {
 						attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 						url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
 					/>
-					{deviceLocations.slice(0, 2000).map((item) => (
+					{/* {data1.map((item) => (
 						<Marker
 							position={[
 								item['Latitude of Connected Radio'],
@@ -211,7 +201,7 @@ const Dashboard = () => {
 								</div>
 							</Popup>
 						</Marker>
-					))}
+					))} */}
 				</Map>
 			</div>
 		</>
