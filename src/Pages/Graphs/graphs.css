@@ -56,8 +56,8 @@
     float: right;
     z-index: 999;
     position: absolute;
-    margin-left: 50%;
-    margin-top: 28px;
+    /* margin-left: 50%;
+    margin-top: 28px; */
   }
   .excellent {
     display: flex;

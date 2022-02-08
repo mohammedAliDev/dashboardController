@@ -14,6 +14,14 @@ const Graphs = (props) => {
 		modelName:'Galaxy S Duos',
 		osVersion:'10'
 	}
+	const graphNames = {
+		'CQI': "Channel Quality Index (CQI)",
+		'SINR': "Signal to Inference Noise Ratio (SINR)",
+		'RSRQ': "Reference Signal Received Quality (RSRQ)",
+		'RSRP': "Reference Signal Received Power (RSRP)",
+		'RTT': "Round Trip Time (RTT)",
+		'Throughput': "Throughput",
+	};
 	const CQISeries=[
 		{
 			name: "CQI",
@@ -133,7 +141,7 @@ const Graphs = (props) => {
 	  }]
 	},
 	title: {
-	text: dataDisplayed === 'applicationData'?deviceDataDisplayed:dataDisplayed,
+	text: dataDisplayed === 'applicationData'?graphNames[deviceDataDisplayed]:graphNames[dataDisplayed],
 	align: 'left'
 	},
 	dataLabels:{
@@ -180,8 +188,8 @@ const Graphs = (props) => {
 		},
 		annotations: {},
 		title: {
-		text: deviceDataDisplayed,
-		align: 'center'
+		text: graphNames[deviceDataDisplayed],
+		align: 'left'
 		},
 		dataLabels:{
 			enabled:false
@@ -235,6 +243,7 @@ const Graphs = (props) => {
 		setDeviceDataDisplayed(value)
 		setSeries(appDataSeries)
 		console.log("viewing ", value)
+		console.log("dhbwjw",graphNames[value])
 	}
 
 	return (
@@ -292,6 +301,12 @@ const Graphs = (props) => {
 							</div>
 							:
 							<div>
+								<Chart
+									options={optionsLine}
+									series={series}
+									height={500}
+									type='line'
+								/>
 								<div class="styleTrendLines">
 									<div class="excellent">
 										<div class="circle greenCircle" />
@@ -310,12 +325,6 @@ const Graphs = (props) => {
 										<span>Poor</span>
 									</div>
 								</div>
-								<Chart
-									options={optionsLine}
-									series={series}
-									height={500}
-									type='line'
-								/>
 							</div>
 						}
 						</div>
