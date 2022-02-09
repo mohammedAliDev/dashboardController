@@ -4,8 +4,12 @@ import './graphs.css';
 import { Card,Row,Col, Button } from 'antd';
 import 'antd/dist/antd.css';
 import DeviceInfo from '../../Components/DeviceInfoHeader/DeviceInfo';
-
+import BarChart from '../../Components/Charts/BarChart';
+import LineChart from '../../Components/Charts/LineChart';
+import Plot from 'react-plotly.js';
 const Graphs = (props) => {
+	const exampleData = [34, 44, 32, 78, 184, 221, 171, 26, 62, 5];
+	const cleanData = exampleData.map((item, i) => ({ x: i, y: item }));
 	const [dataDisplayed, setDataDisplayed] = useState('applicationData');
 	const [deviceDataDisplayed, setDeviceDataDisplayed] = useState('RTT');
 	const [appVersion, setAppVersion] = useState(24);
@@ -252,6 +256,22 @@ const Graphs = (props) => {
 				<div className='content'>
 					<DeviceInfo brand={deviceInfo.brandName} model={deviceInfo.modelName} os={deviceInfo.osVersion}/>
 					<Card className='card'>
+						<BarChart />
+						<LineChart width={500} height={500}/>
+						<h1>
+							by plotly
+						</h1>
+						{/* <Plot
+							data={[
+							{
+								x: [1, 2, 3],
+								y: [2, 6, 3],
+								type: 'scatter',
+								mode: 'lines+markers',
+								marker: {color: 'red'},
+							}]}
+							layout={ {width: 320, height: 240, title: 'A Fancy Plot'} }
+						/> */}
 						<div className='content'>
 							<Row >
 								<Col xs={{ span: 24}} lg={{ span: 24}}>

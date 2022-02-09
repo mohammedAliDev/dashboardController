@@ -1,0 +1,16 @@
+ /* Declare our colour custom properties (a.k.a. CSS variables) */
+:root {
+    --grey: #dad8d2;
+    --primary: #00b7c6;
+}
+
+/* Set the border for the whole graph */
+.graph--example {
+    border: 1px solid var(--grey);
+}
+
+/* Set the colour of the line (and remove any defualt "fill" our line may have) */
+.graph__data {
+    fill: none;
+    stroke: var(--primary);
+}
