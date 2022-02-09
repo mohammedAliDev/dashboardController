@@ -6,7 +6,7 @@ import 'antd/dist/antd.css';
 import DeviceInfo from '../../Components/DeviceInfoHeader/DeviceInfo';
 import BarChart from '../../Components/Charts/BarChart';
 import LineChart from '../../Components/Charts/LineChart';
-import Plot from 'react-plotly.js';
+// import Plot from 'react-plotly.js';
 const Graphs = (props) => {
 	const exampleData = [34, 44, 32, 78, 184, 221, 171, 26, 62, 5];
 	const cleanData = exampleData.map((item, i) => ({ x: i, y: item }));
