@@ -22,11 +22,52 @@ var LeafIcon = L.Icon.extend({
 	},
 });
 
-// var icon1 =
+var icon1 = new LeafIcon({
+	iconUrl: require('../../Assets/Icons/10_Location/01.png'),
+});
+var icon2 = new LeafIcon({
+	iconUrl: require('../../Assets/Icons/10_Location/02.png'),
+});
+var icon3 = new LeafIcon({
+	iconUrl: require('../../Assets/Icons/10_Location/03.png'),
+});
+var icon4 = new LeafIcon({
+	iconUrl: require('../../Assets/Icons/10_Location/04.png'),
+});
+var icon5 = new LeafIcon({
+	iconUrl: require('../../Assets/Icons/10_Location/05.png'),
+});
+var icon6 = new LeafIcon({
+	iconUrl: require('../../Assets/Icons/10_Location/06.png'),
+});
+var icon7 = new LeafIcon({
+	iconUrl: require('../../Assets/Icons/10_Location/06.png'),
+});
+var icon8 = new LeafIcon({
+	iconUrl: require('../../Assets/Icons/10_Location/06.png'),
+});
+var icon9 = new LeafIcon({
+	iconUrl: require('../../Assets/Icons/10_Location/06.png'),
+});
+var icon10 = new LeafIcon({
+	iconUrl: require('../../Assets/Icons/10_Location/06.png'),
+});
 
 const Dashboard = () => {
 	const position = [32.962171, -96.710217];
 	const [deviceLocations, setDeviceLocations] = useState([]);
+	const icons = [
+		icon1,
+		icon2,
+		icon3,
+		icon4,
+		icon5,
+		icon6,
+		icon7,
+		icon8,
+		icon9,
+		icon10,
+	];
 	const [view, setView] = useState('live');
 	const navigate = useNavigate();
 	const { Option } = Select;
@@ -42,6 +83,7 @@ const Dashboard = () => {
 			arr.push({
 				'Longitude of Connected Radio': unique[i],
 				'Latitude of Connected Radio': unique[unique.length / 2 + i],
+				markerIcon: icons[i],
 			});
 		}
 		setDeviceLocations(arr);
@@ -89,7 +131,7 @@ const Dashboard = () => {
 								item['Latitude of Connected Radio'],
 								item['Longitude of Connected Radio'],
 							]}
-							// icon={icon1}
+							icon={item?.markerIcon}
 							onClick={(e) => {
 								navigate('/device-list', { state: { view: view } });
 								// navigate('/graphs');
