@@ -1,15 +1,13 @@
-import React, { useState } from 'react';
-import Chart from "react-apexcharts";
+import React, { useState, useEffect } from 'react';
 import './graphs.css';
 import { Card,Row,Col, Button } from 'antd';
 import 'antd/dist/antd.css';
 import DeviceInfo from '../../Components/DeviceInfoHeader/DeviceInfo';
-import BarChart from '../../Components/Charts/BarChart';
 import LineChart from '../../Components/Charts/LineChart';
-// import Plot from 'react-plotly.js';
+import Plot from 'react-plotly.js';
+import { data } from '../../utils/data';
+
 const Graphs = (props) => {
-	const exampleData = [34, 44, 32, 78, 184, 221, 171, 26, 62, 5];
-	const cleanData = exampleData.map((item, i) => ({ x: i, y: item }));
 	const [dataDisplayed, setDataDisplayed] = useState('applicationData');
 	const [deviceDataDisplayed, setDeviceDataDisplayed] = useState('RTT');
 	const [appVersion, setAppVersion] = useState(24);
@@ -26,6 +24,9 @@ const Graphs = (props) => {
 		'RTT': "Round Trip Time (RTT)",
 		'Throughput': "Throughput",
 	};
+	const [SINR,setSINR] = useState([]);
+	const [Throughput, setThroughput]= useState([]);
+	const [RSRP, setRSRP] = useState([]);
 	const CQISeries=[
 		{
 			name: "CQI",
@@ -71,155 +72,22 @@ const Graphs = (props) => {
 	const [deviceInfo,setDeviceInfo] = useState(devInfo)
 	const [series,setSeries] = useState(appDataSeries)
 	const [legendLevels, setLegendLevels] = useState({y1:0,y2:0,y3:0,y4:0,y5:0})
-	const optionsLine = {
-	chart: {
-		id: "line",
-		toolbar: {
-		show: true,
-		offsetX: 0,
-		offsetY: 0,
-		tools: {
-				download: false,
-				selection: false,
-				zoom: false,
-				zoomin: true,
-				zoomout: true,
-				pan: true,
-			},
-			autoSelected: 'pan'
-		},
-		background: '#eee7e7'
-	},
-	annotations: {
-		position: 'front' ,
-		yaxis: [{
-		y: legendLevels.y1,
-		y2: legendLevels.y2,
-		fillColor: '#ff8585',
-		opacity: 0.2,
-		// label: {
-		//   borderColor: '#333',
-		//   style: {
-		// 	fontSize: '10px',
-		// 	color: '#333',
-		// 	background: '#ff8585',
-		//   },
-		//   text: 'Poor',
-		// }
-	  },
-	  {
-		y: legendLevels.y2,
-		y2: legendLevels.y3,
-		fillColor: '#faff74',
-		opacity: 0.2,
-		// label: {
-		//   borderColor: '#d2d2d2',
-		//   style: {
-		// 	fontSize: '10px',
-		// 	color: '#333',
-		// 	background: '#faff74',
-		//   },
-		//   text: 'Average',
-		// }
-	  },
-	  {
-		y: legendLevels.y3,
-		y2: legendLevels.y4,
-		fillColor: '#a1d5ff',
-		opacity: 0.2,
-		// label: {
-		//   borderColor: '#333',
-		//   style: {
-		// 	fontSize: '10px',
-		// 	color: '#333',
-		// 	background: '#a1d5ff',
-		//   },
-		//   text: 'Good',
-		// }
-	  },
-	  {
-		y: legendLevels.y4,
-		y2: legendLevels.y5,
-		fillColor: '#91ffb8',
-		opacity: 0.2,
-	  }]
-	},
-	title: {
-	text: dataDisplayed === 'applicationData'?graphNames[deviceDataDisplayed]:graphNames[dataDisplayed],
-	align: 'left'
-	},
-	dataLabels:{
-		enabled:false
-	},
-	stroke: {
-		show: true,
-		curve:'straight',
-		width: 5,
-		dashArray: 0,      
-	},
-	markers: {
-        size: 4,
-        strokeColor: "#fff",
-        strokeWidth: 1,
-        strokeOpacity: 2,
-        fillOpacity: 5,
-        hover: {
-          size: 6
-        }
-      },
-	xaxis: {
-		categories: [1972, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,1972, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,1972, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,1972, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999]
-	}
-	};
-	const optionsArea = {
-		chart: {
-			id: "area",
-			toolbar: {
-			show: true,
-			offsetX: 0,
-			offsetY: 0,
-			tools: {
-					download: false,
-					selection: false,
-					zoom: false,
-					zoomin: true,
-					zoomout: true,
-					pan: true,
-				},
-				autoSelected: 'pan'
-			},
-			background: '#eee7e7'
-		},
-		annotations: {},
-		title: {
-		text: graphNames[deviceDataDisplayed],
-		align: 'left'
-		},
-		dataLabels:{
-			enabled:false
-		},
-		stroke: {
-			show: true,
-			curve:'straight',
-			width: 5,
-			dashArray: 0,      
-		},
-		markers: {
-			size: 0,
-			strokeColor: "#fff",
-			strokeWidth: 1,
-			strokeOpacity: 2,
-			fillOpacity: 5,
-			hover: {
-			  size: 5
-			}
-		  },
-		xaxis: {
-			categories: [1972, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,1972, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,1972, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,1972, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999]
-		}
-		};
 	// functions
 
+	const getData = () =>{
+		var sinr = [];
+		var throughput = [];
+		var rsrp = [];
+		data.map((item)=>{
+			sinr.push(item['SINR[dB]']);
+			throughput.push(item['Throughput (Kbps)']/1000000);
+			rsrp.push(item['RSRP[dBm]']);
+		})
+		setSINR(sinr);
+		setThroughput(throughput);
+		setRSRP(rsrp);
+		console.log('rsrp',RSRP);
+	}
 	const seeGraphType = (value) =>{
 		setDataDisplayed(value)
 		console.log("viewing ", value)
@@ -249,6 +117,9 @@ const Graphs = (props) => {
 		console.log("viewing ", value)
 		console.log("dhbwjw",graphNames[value])
 	}
+	useEffect(() => {
+		getData();
+	}, []);
 
 	return (
 		<div className='container'>
@@ -256,22 +127,33 @@ const Graphs = (props) => {
 				<div className='content'>
 					<DeviceInfo brand={deviceInfo.brandName} model={deviceInfo.modelName} os={deviceInfo.osVersion}/>
 					<Card className='card'>
-						<BarChart />
 						<LineChart width={500} height={500}/>
 						<h1>
-							by plotly
+							SINR vs Throughput
 						</h1>
-						{/* <Plot
+						<Plot
 							data={[
 							{
-								x: [1, 2, 3],
-								y: [2, 6, 3],
+								x: Throughput,
+								y: SINR,
 								type: 'scatter',
-								mode: 'lines+markers',
-								marker: {color: 'red'},
+								mode: 'markers',
+								marker: {color: 'red',size:3},
 							}]}
-							layout={ {width: 320, height: 240, title: 'A Fancy Plot'} }
-						/> */}
+							layout={ {width: 800, height: 600, title: 'SINR vs Throughput',plot_bgcolor:'#e6ebf7',xaxis:{gridcolor:'#fff',title:{text:'Throughput (Mbps)'}},yaxis:{gridcolor:'#fff',title:{text:'SINR (dB)'}}} }
+						/>
+						<h1>SINR vs RSRP</h1>
+						<Plot
+							data={[
+							{
+								x: RSRP,
+								y: SINR,
+								type: 'scatter',
+								mode: 'markers',
+								marker: {color: 'blue',size:3,opacity:0.45},
+							}]}
+							layout={ {width: 800, height: 600, title: 'SINR vs RSRP',plot_bgcolor:'#e6ebf7',xaxis:{gridcolor:'#fff',title:{text:'RSRP (dBm)'}},yaxis:{gridcolor:'#fff',title:{text:'SINR (dB)'}} }}
+						/>
 						<div className='content'>
 							<Row >
 								<Col xs={{ span: 24}} lg={{ span: 24}}>
@@ -312,21 +194,11 @@ const Graphs = (props) => {
 						<div className='content'>
 						{dataDisplayed==="applicationData"?
 							<div>
-								<Chart
-								options={optionsArea}
-								series={series}
-								height={500}
-								type='area'
-							/>
+								App data
 							</div>
 							:
 							<div>
-								<Chart
-									options={optionsLine}
-									series={series}
-									height={500}
-									type='line'
-								/>
+								radio data
 								<div class="styleTrendLines">
 									<div class="excellent">
 										<div class="circle greenCircle" />
