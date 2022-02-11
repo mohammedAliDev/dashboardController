@@ -5,17 +5,12 @@ import L from 'leaflet';
 import './dashboard.css';
 import { useNavigate } from 'react-router-dom';
 import { Row, Col, Button } from 'antd';
-import { getRequiredSVGPinByCategory } from '../../utils';
 import { Select } from 'antd';
 import _ from 'lodash';
 const { Option } = Select;
 
-// delete L.Icon.Default.prototype._getIconUrl;
-
 var LeafIcon = L.Icon.extend({
 	options: {
-		// iconRetinaUrl: require('../../Assets/Icons/celltower1.png'),
-		// iconUrl: require('../../Assets/Icons/c elltower1.png'),
 		shadowUrl: undefined,
 		iconSize: [35],
 		shadowAnchor: [9, 46],
