@@ -138,7 +138,7 @@ const Graphs = (props) => {
 								y: SINR,
 								type: 'scatter',
 								mode: 'markers',
-								marker: {color: 'red',size:3},
+								marker: {color: 'red',size:3,opacity:0.45},
 							}]}
 							layout={ {width: 800, height: 600, title: 'SINR vs Throughput',plot_bgcolor:'#e6ebf7',xaxis:{gridcolor:'#fff',title:{text:'Throughput (Mbps)'}},yaxis:{gridcolor:'#fff',title:{text:'SINR (dB)'}}} }
 						/>
