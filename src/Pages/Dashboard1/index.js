@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import './dashboard.scss';
 import ApplicationIcon from '../../Assets/Icons/applicationIcon.svg';
 import G1 from '../../Assets/Icons/g1.svg';
-import M1 from '../../Assets/Icons/m1.svg';
-import M2 from '../../Assets/Icons/m2.svg';
 import M5 from '../../Assets/Icons/m5.svg';
 import Node from '../../Assets/Icons/node.svg';
 import Table1 from '../../Assets/Icons/table1.svg';
 import Map from '../../Assets/Icons/map.svg';
 import Header from '../../Components/Header';
 import Sidebar from '../../Components/Sidebar/Sidebar';
+import GeoMap from '../../Components/GeoMap';
+import MobilityMap from '../../Components/MobilityMap';
 
 const Dashboard1 = () => {
 	const [open, setOpen] = useState(false);
@@ -30,7 +30,7 @@ const Dashboard1 = () => {
 											<img className='mr-15' src={ApplicationIcon} alt='' />{' '}
 											Application Instances
 										</h2>
-										<p className='fbig'>595 </p>
+										<p className='fbig'>595</p>
 									</div>
 								</div>
 								<div className='col-lg-8 col-md-8'>
@@ -38,8 +38,12 @@ const Dashboard1 = () => {
 										<p>
 											Application Device Details Connected to Cellular Sites
 										</p>
-										<img alt='' src={Map} />
-										<div className='flex-container'>
+										<GeoMap />
+										{/* <img alt='' src={Map} /> */}
+										<div
+											className='flex-container'
+											style={{ zIndex: '99999999' }}
+										>
 											<div className='ulPosition'>
 												<ul className='mapUl'>
 													<li>
@@ -87,13 +91,13 @@ const Dashboard1 = () => {
 												<div className='row'>
 													<div className='col-md-6'>
 														<div className='mapInner'>
-															<img alt='' src={M1} />
+															<MobilityMap />
 															<span className='verizonMap'>Verizon</span>
 														</div>
 													</div>
 													<div className='col-md-6'>
 														<div className='mapInner'>
-															<img alt='' src={M2} />
+															{/* <MobilityMap /> */}
 															<span className='at-tMap'>AT&T</span>
 														</div>
 													</div>

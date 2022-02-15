@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './style.scss';
 import Logo from '../../Assets/Icons/logo.svg';
 import HomeIcon from '../../Assets/Icons/homeIcon.svg';
@@ -17,41 +17,46 @@ const Sidebar = ({ open, setOpen }) => {
 		<>
 			<div className={`mainSideArea`}>
 				<div className='logoArea'>
-					<a href=''>
-						<img src={Logo} />
+					<a href='/'>
+						<img alt='' src={Logo} />
 					</a>
 				</div>
 				<div className='menuArea'>
 					<ul className='sidebarMenu marginBottom'>
 						<li className='active'>
-							<a href='#'>
-								<img src={HomeIcon} /> <span className='menuName'>Dummy </span>
+							<a href='/'>
+								<img alt='' src={HomeIcon} />{' '}
+								<span className='menuName'>Dummy </span>
 							</a>
 						</li>
 						<li>
-							<a href='#'>
-								<img src={UploadCloud} />{' '}
+							<a href='/'>
+								<img alt='' src={UploadCloud} />{' '}
 								<span className='menuName'>Dummy</span>
 							</a>
 						</li>
 						<li>
-							<a href='#'>
-								<img src={BarChart} /> <span className='menuName'>Dummy</span>
+							<a href='/'>
+								<img alt='' src={BarChart} />{' '}
+								<span className='menuName'>Dummy</span>
 							</a>
 						</li>
 						<li>
-							<a href='#'>
-								<img src={Notify} /> <span className='menuName'>Dummy</span>
+							<a href='/'>
+								<img alt='' src={Notify} />{' '}
+								<span className='menuName'>Dummy</span>
 							</a>
 						</li>
 						<li>
-							<a href='#'>
-								<img src={XOctagon} /> <span className='menuName'>Dummy</span>
+							<a href='/'>
+								<img alt='' src={XOctagon} />{' '}
+								<span className='menuName'>Dummy</span>
 							</a>
 						</li>
 						<li>
-							<a href='#'>
-								<img src={Delete} /> <span className='menuName'>Dummy</span>
+							<a href='/'>
+								<img alt='' src={Delete} />{' '}
+								<span className='menuName'>Dummy</span>
 							</a>
 						</li>
 					</ul>
@@ -59,18 +64,18 @@ const Sidebar = ({ open, setOpen }) => {
 				<div className='userArea'>
 					<ul className='userMenu'>
 						<li>
-							<a href=''>
-								<img src={NotifictaionBell} /> <span>02</span>
+							<a href='/'>
+								<img alt='' src={NotifictaionBell} /> <span>02</span>
 							</a>
 						</li>
 						<li>
-							<a href=''>
-								<img src={HelpCircle} />
+							<a href='/'>
+								<img alt='' src={HelpCircle} />
 							</a>
 						</li>
 						<li className='avtarMenu'>
-							<a href=''>
-								<img src={Avtar} />
+							<a href='/'>
+								<img alt='' src={Avtar} />
 							</a>
 						</li>
 					</ul>
