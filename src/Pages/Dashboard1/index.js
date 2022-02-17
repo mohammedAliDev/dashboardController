@@ -38,8 +38,8 @@ const Dashboard1 = () => {
 										<p>
 											Application Device Details Connected to Cellular Sites
 										</p>
-										<GeoMap />
-										{/* <img alt='' src={Map} /> */}
+										{/* <GeoMap /> */}
+										<MobilityMap />
 										<div
 											className='flex-container'
 											style={{ zIndex: '99999999' }}
@@ -91,14 +91,16 @@ const Dashboard1 = () => {
 												<div className='row'>
 													<div className='col-md-6'>
 														<div className='mapInner'>
-															<MobilityMap />
-															<span className='verizonMap'>Verizon</span>
+															{/* <MobilityMap /> */}
+															<span className='mapInnerSpan verizonMap'>
+																Verizon
+															</span>
 														</div>
 													</div>
 													<div className='col-md-6'>
 														<div className='mapInner'>
 															{/* <MobilityMap /> */}
-															<span className='at-tMap'>AT&T</span>
+															<span className='mapInnerSpan at-tMap'>AT&T</span>
 														</div>
 													</div>
 												</div>

@@ -197,7 +197,7 @@ $tmobile_color: #ff65b6;
 }
 .mapInner {
 	position: relative;
-	span {
+	.mapInnerSpan {
 		z-index: 999999;
 		position: absolute;
 		right: 0;

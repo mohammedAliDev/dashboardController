@@ -9,10 +9,10 @@ const Routes = () => {
 	return (
 		<BrowserRouter>
 			<R>
-				<Route path='/' element={<Dashboard />} exact />
+				<Route path='/' element={<Dashboard1 />} exact />
 				<Route path='/graphs' element={<Graphs />} exact />
 				<Route path='/device-list' element={<DeviceList />} exact />
-				<Route path='/dashboard1' element={<Dashboard1 />} exact />
+				<Route path='/dashboard1' element={<Dashboard />} exact />
 			</R>
 		</BrowserRouter>
 	);

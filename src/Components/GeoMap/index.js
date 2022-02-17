@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Map, Marker, TileLayer, Popup } from 'react-leaflet';
+import { MapContainer, Marker, TileLayer, Popup } from 'react-leaflet';
 import { data } from '../../utils/data';
 import L from 'leaflet';
 import { useNavigate } from 'react-router-dom';
@@ -85,7 +85,7 @@ const Dashboard = () => {
 
 	return (
 		<>
-			<Map
+			<MapContainer
 				preferCanvas={true}
 				style={{ height: '224px' }}
 				center={[position[0], position[1]]}
@@ -122,7 +122,7 @@ const Dashboard = () => {
 						</Popup>
 					</Marker>
 				))}
-			</Map>
+			</MapContainer>
 		</>
 	);
 };
