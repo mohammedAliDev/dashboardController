@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Map, Marker, TileLayer, Popup } from 'react-leaflet';
+import { MapContainer, Marker, TileLayer, Popup } from 'react-leaflet';
 import { data } from '../../utils/data';
 import L from 'leaflet';
 import './dashboard.css';
@@ -111,7 +111,7 @@ const Dashboard = () => {
 					</Col>
 				</Row>
 				<Button onClick={() => checkObject()}>Click here</Button>
-				<Map
+				<MapContainer
 					style={{ height: '100vh' }}
 					center={[position[0], position[1]]}
 					zoom={6}
@@ -147,7 +147,7 @@ const Dashboard = () => {
 							</Popup>
 						</Marker>
 					))}
-				</Map>
+				</MapContainer>
 			</div>
 		</>
 	);
