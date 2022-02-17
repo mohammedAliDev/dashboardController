@@ -6,117 +6,134 @@ import DeviceInfo from '../../Components/DeviceInfoHeader/DeviceInfo';
 import LineChart from '../../Components/Charts/LineChart';
 import Plot from 'react-plotly.js';
 import { data } from '../../utils/data';
+import ScatterPlot from '../../Components/Charts/ScatterPlot';
+import CanvasPlot from '../../Components/Charts/CanvasPlot';
+
 
 const Graphs = (props) => {
-	const [dataDisplayed, setDataDisplayed] = useState('applicationData');
-	const [deviceDataDisplayed, setDeviceDataDisplayed] = useState('RTT');
+	// const [dataDisplayed, setDataDisplayed] = useState('applicationData');
+	// const [deviceDataDisplayed, setDeviceDataDisplayed] = useState('RTT');
 	const [appVersion, setAppVersion] = useState(24);
 	const devInfo={
 		brandName:'Samsung',
 		modelName:'Galaxy S Duos',
 		osVersion:'10'
 	}
-	const graphNames = {
-		'CQI': "Channel Quality Index (CQI)",
-		'SINR': "Signal to Inference Noise Ratio (SINR)",
-		'RSRQ': "Reference Signal Received Quality (RSRQ)",
-		'RSRP': "Reference Signal Received Power (RSRP)",
-		'RTT': "Round Trip Time (RTT)",
-		'Throughput': "Throughput",
-	};
+	// const graphNames = {
+	// 	'CQI': "Channel Quality Index (CQI)",
+	// 	'SINR': "Signal to Inference Noise Ratio (SINR)",
+	// 	'RSRQ': "Reference Signal Received Quality (RSRQ)",
+	// 	'RSRP': "Reference Signal Received Power (RSRP)",
+	// 	'RTT': "Round Trip Time (RTT)",
+	// 	'Throughput': "Throughput",
+	// };
 	const [SINR,setSINR] = useState([]);
 	const [Throughput, setThroughput]= useState([]);
 	const [RSRP, setRSRP] = useState([]);
-	const CQISeries=[
-		{
-			name: "CQI",
-			data: [52, 40, 45, 50, 49, 30, 36, 12, 52, 40, 45, 50, 49, 30, 30, 18, 52, 40, 45, 50, 49, 30, 31, 27, 50, 49, 30, 45, 59, 52, 40, 45, 4]
-		}
-	];
-	const SINRSeries=[
-		{
-			name: "SINR",
-			data: [52, 40, 45, 80, 49, 30, 36, 19, 52, 53, 45, 20, 49, 31, 40, 18, 52, 40, 45, 90, 19, 40, 11, 27, 30, 25, 30, 45, 59, 52, 44]
-		}
-	];
-	const appDataSeries=[
-		{
-			name: "appdata",
-			data: [40, 45, 80, 46, 19, 52, 53, 45, 80, 49, 30, 36, 19, 52, 49, 31 ,49, 31, 40, 52, 40,45, 25, 30, 45, 59, 52, 44]
-		}
-	];
-	const RSRQSeries=[
-		{
-			name: "RSRQ",
-			data: [52, 40, 45, 50, 49, 19, 36, 12, 5, 33, 45, 50, 40, 29, 19, 18, 52, 40, 45, 50, 49, 19, 31, 27, 50, 49, 30, 41, 5, 5, 40, 35]
-		}
-	];
-	const RSRPSeries=[
-		{
-			name: "RSRP",
-			data: [52, 40, 45, 50, 49, 30, 36, 12, 52, 40, 40, 50, 49, 30, 45, 50, 49, 30, 20, 18, 52, 40, 45, 50, 49, 30, 31, 24]
-		}
-	];
-	const SINRLevels = {
-		y1: 10,y2: 15,y3: 24,y4: 39,y5: 50
-	};
-	const CQILevels = {
-		y1: 10,y2: 15,y3: 24,y4: 39,y5: 50
-	};
-	const RSRPLevels = {
-		y1: 10,y2: 15,y3: 24,y4: 39,y5: 50
-	};
-	const RSRQLevels = {
-		y1: 10,y2: 15,y3: 24,y4: 39,y5: 50
-	};
+	const [RSRQ, setRSRQ] = useState([]);
+	const [CQI, setCQI] = useState([]);
+
+	// const CQISeries=[
+	// 	{
+	// 		name: "CQI",
+	// 		data: [52, 40, 45, 50, 49, 30, 36, 12, 52, 40, 45, 50, 49, 30, 30, 18, 52, 40, 45, 50, 49, 30, 31, 27, 50, 49, 30, 45, 59, 52, 40, 45, 4]
+	// 	}
+	// ];
+	// const SINRSeries=[
+	// 	{
+	// 		name: "SINR",
+	// 		data: [52, 40, 45, 80, 49, 30, 36, 19, 52, 53, 45, 20, 49, 31, 40, 18, 52, 40, 45, 90, 19, 40, 11, 27, 30, 25, 30, 45, 59, 52, 44]
+	// 	}
+	// ];
+	// const appDataSeries=[
+	// 	{
+	// 		name: "appdata",
+	// 		data: [40, 45, 80, 46, 19, 52, 53, 45, 80, 49, 30, 36, 19, 52, 49, 31 ,49, 31, 40, 52, 40,45, 25, 30, 45, 59, 52, 44]
+	// 	}
+	// ];
+	// const RSRQSeries=[
+	// 	{
+	// 		name: "RSRQ",
+	// 		data: [52, 40, 45, 50, 49, 19, 36, 12, 5, 33, 45, 50, 40, 29, 19, 18, 52, 40, 45, 50, 49, 19, 31, 27, 50, 49, 30, 41, 5, 5, 40, 35]
+	// 	}
+	// ];
+	// const RSRPSeries=[
+	// 	{
+	// 		name: "RSRP",
+	// 		data: [52, 40, 45, 50, 49, 30, 36, 12, 52, 40, 40, 50, 49, 30, 45, 50, 49, 30, 20, 18, 52, 40, 45, 50, 49, 30, 31, 24]
+	// 	}
+	// ];
+	// const SINRLevels = {
+	// 	y1: 10,y2: 15,y3: 24,y4: 39,y5: 50
+	// };
+	// const CQILevels = {
+	// 	y1: 10,y2: 15,y3: 24,y4: 39,y5: 50
+	// };
+	// const RSRPLevels = {
+	// 	y1: 10,y2: 15,y3: 24,y4: 39,y5: 50
+	// };
+	// const RSRQLevels = {
+	// 	y1: 10,y2: 15,y3: 24,y4: 39,y5: 50
+	// };
 	const [deviceInfo,setDeviceInfo] = useState(devInfo)
-	const [series,setSeries] = useState(appDataSeries)
-	const [legendLevels, setLegendLevels] = useState({y1:0,y2:0,y3:0,y4:0,y5:0})
+	// const [series,setSeries] = useState(appDataSeries)
+	// const [legendLevels, setLegendLevels] = useState({y1:0,y2:0,y3:0,y4:0,y5:0})
 	// functions
 
 	const getData = () =>{
 		var sinr = [];
 		var throughput = [];
 		var rsrp = [];
+		var rsrq=[];
+		// for (let i= 0; i < 50000; i++) {
+		// 	const x = Math.floor(Math.random() * 999999) + 1; 
+		// 	const y = Math.floor(Math.random() * 999999) + 1; 
+		// 	sinr.push(x);
+		// 	throughput.push(y);
+		// 	rsrp.push(x);
+		// 	rsrq.push(y);
+		// }
 		data.map((item)=>{
 			sinr.push(item['SINR[dB]']);
 			throughput.push(item['Throughput (Kbps)']/1000000);
 			rsrp.push(item['RSRP[dBm]']);
+			rsrq.push(item['RSRQ[dB]']);
 		})
 		setSINR(sinr);
 		setThroughput(throughput);
 		setRSRP(rsrp);
+		setRSRQ(rsrq);
 		console.log('rsrp',RSRP);
 	}
-	const seeGraphType = (value) =>{
-		setDataDisplayed(value)
-		console.log("viewing ", value)
-		switch(value)
-		{
-			case 'CQI': setSeries(CQISeries);
-						setLegendLevels(CQILevels);
-						break;
-			case 'RSRQ': setSeries(RSRQSeries);
-						setLegendLevels(RSRQLevels);		
-						break;
-			case 'RSRP': setSeries(RSRPSeries);
-						setLegendLevels(RSRPLevels);		
-						break;
-			case 'SINR': setSeries(SINRSeries);
-						setLegendLevels(RSRPLevels);
-						break;
-			case 'applicationData': setSeries(appDataSeries);
-						setLegendLevels({y1:0,y2:0,y3:0,y4:0,y5:0})
-						break;
-		}
+	// const seeGraphType = (value) =>{
+	// 	setDataDisplayed(value)
+	// 	console.log("viewing ", value)
+	// 	switch(value)
+	// 	{
+	// 		case 'CQI': setSeries(CQISeries);
+	// 					setLegendLevels(CQILevels);
+	// 					break;
+	// 		case 'RSRQ': setSeries(RSRQSeries);
+	// 					setLegendLevels(RSRQLevels);		
+	// 					break;
+	// 		case 'RSRP': setSeries(RSRPSeries);
+	// 					setLegendLevels(RSRPLevels);		
+	// 					break;
+	// 		case 'SINR': setSeries(SINRSeries);
+	// 					setLegendLevels(RSRPLevels);
+	// 					break;
+	// 		case 'applicationData': setSeries(appDataSeries);
+	// 					setLegendLevels({y1:0,y2:0,y3:0,y4:0,y5:0})
+	// 					break;
+	// 	}
 		
-	}
-	const seeSubGraphType = (value) =>{
-		setDeviceDataDisplayed(value)
-		setSeries(appDataSeries)
-		console.log("viewing ", value)
-		console.log("dhbwjw",graphNames[value])
-	}
+	// }
+	// const seeSubGraphType = (value) =>{
+	// 	setDeviceDataDisplayed(value)
+	// 	setSeries(appDataSeries)
+	// 	console.log("viewing ", value)
+	// 	console.log("dhbwjw",graphNames[value])
+	// }
 	useEffect(() => {
 		getData();
 	}, []);
@@ -127,7 +144,7 @@ const Graphs = (props) => {
 				<div className='content'>
 					<DeviceInfo brand={deviceInfo.brandName} model={deviceInfo.modelName} os={deviceInfo.osVersion}/>
 					<Card className='card'>
-						<LineChart width={500} height={500}/>
+						<CanvasPlot/>
 						<h1>
 							SINR vs Throughput
 						</h1>
@@ -142,8 +159,8 @@ const Graphs = (props) => {
 							}]}
 							layout={ {width: 800, height: 600, title: 'SINR vs Throughput',plot_bgcolor:'#e6ebf7',xaxis:{gridcolor:'#fff',title:{text:'Throughput (Mbps)'}},yaxis:{gridcolor:'#fff',title:{text:'SINR (dB)'}}} }
 						/>
-						<h1>SINR vs RSRP</h1>
-						<Plot
+						{/* <h1>SINR vs RSRP</h1> */}
+						{/* <Plot
 							data={[
 							{
 								x: RSRP,
@@ -153,9 +170,9 @@ const Graphs = (props) => {
 								marker: {color: 'blue',size:3,opacity:0.45},
 							}]}
 							layout={ {width: 800, height: 600, title: 'SINR vs RSRP',plot_bgcolor:'#e6ebf7',xaxis:{gridcolor:'#fff',title:{text:'RSRP (dBm)'}},yaxis:{gridcolor:'#fff',title:{text:'SINR (dB)'}} }}
-						/>
+						/> */}
 						<div className='content'>
-							<Row >
+							{/* <Row >
 								<Col xs={{ span: 24}} lg={{ span: 24}}>
 									<Row >
 										<Button shape="round" size='medium' className={dataDisplayed==="applicationData" ? "chip-btn sel" : "chip-btn"} onClick={()=>{seeGraphType('applicationData')}}> Application Data</Button>
@@ -164,10 +181,10 @@ const Graphs = (props) => {
 										<Button shape="round" size='medium' className={dataDisplayed==="CQI" ? "chip-btn sel" : "chip-btn"} onClick={()=>{seeGraphType('CQI')}}> CQI</Button>
 									</Row>
 								</Col>
-							</Row>
+							</Row> */}
 							<div className='divider'></div>
 						</div>
-						{
+						{/* {
 							dataDisplayed === 'applicationData'
 							?
 							<div >
@@ -190,9 +207,9 @@ const Graphs = (props) => {
 							</div>
 							:
 							''
-						}
+						} */}
 						<div className='content'>
-						{dataDisplayed==="applicationData"?
+						{/* {dataDisplayed==="applicationData"?
 							<div>
 								App data
 							</div>
@@ -218,7 +235,7 @@ const Graphs = (props) => {
 									</div>
 								</div>
 							</div>
-						}
+						} */}
 						</div>
 					</Card>
 				</div>
