@@ -3,7 +3,9 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
+import axios from 'axios';
+let AccessURL = 'https://dev.phoenix.innovate5g.com/api/';
+axios.defaults.baseURL = AccessURL;
 ReactDOM.render(
   <React.StrictMode>
     <App />

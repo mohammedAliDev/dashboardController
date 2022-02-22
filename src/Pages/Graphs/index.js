@@ -145,7 +145,7 @@ const Graphs = (props) => {
 					<DeviceInfo brand={deviceInfo.brandName} model={deviceInfo.modelName} os={deviceInfo.osVersion}/>
 					<Card className='card'>
 						<CanvasPlot/>
-						<h1>
+						{/* <h1>
 							SINR vs Throughput
 						</h1>
 						<Plot
@@ -158,7 +158,7 @@ const Graphs = (props) => {
 								marker: {color: 'red',size:3,opacity:0.45},
 							}]}
 							layout={ {width: 800, height: 600, title: 'SINR vs Throughput',plot_bgcolor:'#e6ebf7',xaxis:{gridcolor:'#fff',title:{text:'Throughput (Mbps)'}},yaxis:{gridcolor:'#fff',title:{text:'SINR (dB)'}}} }
-						/>
+						/> */}
 						{/* <h1>SINR vs RSRP</h1> */}
 						{/* <Plot
 							data={[
