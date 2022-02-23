@@ -10,7 +10,7 @@ const CanvasPlot = () => {
     const ref = useRef()
     const [data, setData] = useState([]);
     const [graphData, setGraphData] = useState([])
-    const [timeSpan, setTimeSpan] = useState()
+    const [timeSpan, setTimeSpan] = useState('millisecond')
     
     function paintCanvas(canvas, virtualCanvas, data, x, y) {
         // get the canvas drawing context
@@ -38,6 +38,7 @@ const CanvasPlot = () => {
                 index % 256)
             .toString();
     }
+    
     function paintPoint(context, virtualContext, d, i, x, y, r) {
         const color = getColor(i);
         colorToData[color] = d;
@@ -57,21 +58,21 @@ const CanvasPlot = () => {
 }
 
     const fetchData = () => {
-        var data = {
+        var apidata = {
             granularity : timeSpan,
             attributes : ["rsrq","sinr"],
-            limit : 50000,
+            limit : 10000,
         }
 
         axios
-            .post('/apm-plugin/dashboard/aggregate',data)
+            .post('/apm-plugin/dashboard/aggregate',apidata)
             .then(res => {
                 setGraphData(res.data.Data)
                 console.log("graph data",graphData)
                 setData(graphData)
-                setTimeout(()=>{
-                    renderChart();
-                },5000)
+                    console.log("inside fetchdata useEffect",data)
+                    
+                
             })
             .catch(err => {
                 console.log(err)
@@ -103,10 +104,9 @@ const CanvasPlot = () => {
 
 
         
-        }, [data, timeSpan])
+        }, [graphData, timeSpan])
         // render chart
         function renderChart() {
-            
             console.log("data", data)
             // Make a container div for our graph elements to position themselves against
             const graphDiv = d3.selectAll('div').data([0]);
@@ -144,10 +144,10 @@ const CanvasPlot = () => {
                 .attr('transform', 'translate(' + margin.left + ', ' + margin.top + ')');
             // Create scales
             const x = d3.scaleLinear()
-            .domain([0, 30])
+            .domain([0, 40])
             .range([0, width]);
             const y = d3.scaleLinear()
-                .domain([0, 30])
+                .domain([0, 40])
                 .range([height, 0]);
 
             // Create axes
