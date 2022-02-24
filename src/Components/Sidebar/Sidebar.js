@@ -9,6 +9,7 @@ import XOctagon from '../../Assets/Icons/xOctagon.svg';
 import Delete from '../../Assets/Icons/delete.svg';
 import NotifictaionBell from '../../Assets/Icons/notifictaionBell.svg';
 import HelpCircle from '../../Assets/Icons/help-circle.svg';
+import Wallet from '../../Assets/Icons/wallet.svg';
 import Avtar from '../../Assets/Icons/Avtar.svg';
 import { ReactComponent as ArrowSidebar } from '../../Assets/Icons/arrowSidebar.svg';
 
@@ -26,7 +27,7 @@ const Sidebar = ({ open, setOpen }) => {
 						<li className='active'>
 							<a href='/'>
 								<img alt='' src={HomeIcon} />{' '}
-								<span className='menuName'>Dummy </span>
+								<span className='menuName'>Dashboard </span>
 							</a>
 						</li>
 						<li>
@@ -57,6 +58,12 @@ const Sidebar = ({ open, setOpen }) => {
 							<a href='/'>
 								<img alt='' src={Delete} />{' '}
 								<span className='menuName'>Dummy</span>
+							</a>
+						</li>
+						<li>
+							<a href='/billing'>
+								<img alt='' src={Wallet} />{' '}
+								<span className='menuName'>Billing</span>
 							</a>
 						</li>
 					</ul>

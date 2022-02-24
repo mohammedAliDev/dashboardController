@@ -59,8 +59,20 @@ const CanvasPlot = () => {
 
     const fetchData = () => {
         var apidata = {
-            granularity : timeSpan,
+            granularity : 'millisecond',
             attributes : ["rsrq","sinr"],
+            filters:[
+                {
+                    key:"timestamp",
+                    Op:"lt",
+                    value:'2022-02-23 05:40:51.932'
+                },
+                {
+                    key:"timestamp",
+                    Op:"gt",
+                    value:'2022-02-22 06:26:51.932'
+                }
+            ],
             limit : 10000,
         }
 

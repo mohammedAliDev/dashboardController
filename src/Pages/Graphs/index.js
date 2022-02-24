@@ -8,6 +8,7 @@ import Plot from 'react-plotly.js';
 import { data } from '../../utils/data';
 import ScatterPlot from '../../Components/Charts/ScatterPlot';
 import CanvasPlot from '../../Components/Charts/CanvasPlot';
+import InfragisticLine from '../../Components/Charts/InfragisticLine';
 
 
 const Graphs = (props) => {
@@ -144,7 +145,8 @@ const Graphs = (props) => {
 				<div className='content'>
 					<DeviceInfo brand={deviceInfo.brandName} model={deviceInfo.modelName} os={deviceInfo.osVersion}/>
 					<Card className='card'>
-						<CanvasPlot/>
+						{/* <CanvasPlot/> */}
+						<InfragisticLine />
 						{/* <h1>
 							SINR vs Throughput
 						</h1>

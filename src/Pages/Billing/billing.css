@@ -1,0 +1,17 @@
+.productInfo{
+    font-size: 22px;
+    color: #323467;
+    display: flex;
+}
+.product-details{
+    min-width: 120px
+}
+.bill-input{
+    font-size: 22px !important;
+    height: 64px;
+    line-height: 30px;
+}
+.bill-form{
+    display: flex;
+    justify-content: space-between;
+}

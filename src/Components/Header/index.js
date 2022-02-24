@@ -2,14 +2,15 @@ import { Col, Row } from 'antd';
 import React from 'react';
 import './Header.scss';
 
-const Header = () => {
+const Header = (props) => {
+	const title = props.title;
 	return (
 		<>
 			<div className='headerArea'>
 				<div className='container_1'>
 					<div className='row'>
 						<div className='col-md-6'>
-							<h1>Welcome Back, Emran</h1>
+							<h1>{title}</h1>
 						</div>
 						<div className='col-md-6 text-right'>
 							<ul>

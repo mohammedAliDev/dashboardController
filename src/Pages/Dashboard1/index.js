@@ -20,7 +20,7 @@ const Dashboard1 = () => {
 					<Sidebar open={open} setOpen={setOpen} />
 				</div>
 				<div className='main_wrapper'>
-					<Header />
+					<Header title="Welcome Back, Emran"/>
 					<div className='wrapperArea area_1'>
 						<div className='container_1'>
 							<div className='row'>
