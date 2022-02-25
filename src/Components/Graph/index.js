@@ -8,7 +8,7 @@ import {
 	IgrDataChartInteractivityModule,
 	IgrCategoryChart,
 } from 'igniteui-react-charts';
-
+import axios from 'axios';
 import {
 	IgrLegend,
 	IgrDataChart,
@@ -45,9 +45,41 @@ export default function Graph() {
 	let legend;
 	const legendRef = useRef();
 	const chartRef = useRef();
+	const fetchData = () => {
+        var apidata = {
+            granularity : 'millisecond',
+            attributes : ["rsrq","sinr"],
+            // filters:[
+            //     {
+            //         key:"timestamp",
+            //         Op:"lt",
+            //         value:'2022-02-23 05:40:51.932'
+            //     },
+            //     {
+            //         key:"timestamp",
+            //         Op:"gt",
+            //         value:'2022-02-22 06:26:51.932'
+            //     }
+            // ],
+            limit : 1000000,
+        }
+
+        axios
+            .post('/apm-plugin/dashboard/aggregate',apidata)
+            .then(res => {
+                console.log(res.data.Data)
+                setData(res.data.Data)
+    	        console.log("inside fetchdata useEffect",data)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+                    
+    }
 
 	return (
 		<div className='container sample'>
+			<button onClick={()=>{fetchData()}}>Fetch</button>
 			<div className='legend-title'>Renewable Electricity Generated</div>
 			<div className='legend'>
 				<IgrLegend orientation='Horizontal' ref={legendRef}></IgrLegend>

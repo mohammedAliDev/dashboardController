@@ -41,30 +41,28 @@ const [data, setData] = useState([
 let legend;
 const legendRef = useRef();
 const chartRef = useRef();
+
 return (
         <div className="container sample">
             <div className="legend-title">Renewable Electricity Generated</div>
-                <div className="legend">
-                    <IgrLegend orientation="Horizontal" ref={legendRef}></IgrLegend>
-                </div>
-                <div className="container fill">
-                    <IgrCategoryChart
-                    chartType="Line"
-                    yAxisLabelLeftMargin="0"
-                    yAxisTitleLeftMargin="10"
-                    yAxisTitleRightMargin="5"
-                    yAxisTitle="TWh"
+            <div className="legend">
+                <IgrLegend orientation="Horizontal" ref={legendRef}></IgrLegend>
+            </div>
+            <div className='container fill'>
+                <IgrCategoryChart
+                    chartType='Line'
+                    yAxisLabelLeftMargin='0'
+                    yAxisTitleLeftMargin='10'
+                    yAxisTitleRightMargin='5'
+                    yAxisTitle='TWh'
                     dataSource={data}
-                    legend={legendRef.current}
-                    isHorizontalZoomEnabled="false"
-                    isVerticalZoomEnabled="false"
+                    legend={legend}
+                    isHorizontalZoomEnabled='false'
+                    isVerticalZoomEnabled='false'
                     ref={chartRef}
-                    chart={chartRef.current}
-                    >
-                    
-
-                    </IgrCategoryChart>
+                ></IgrCategoryChart>
             </div>
         </div>
+        
 );
 }
