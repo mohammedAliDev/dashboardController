@@ -4,7 +4,6 @@ import { Card,Row,Col, Button } from 'antd';
 import 'antd/dist/antd.css';
 import DeviceInfo from '../../Components/DeviceInfoHeader/DeviceInfo';
 import LineChart from '../../Components/Charts/LineChart';
-import Plot from 'react-plotly.js';
 import { data } from '../../utils/data';
 import ScatterPlot from '../../Components/Charts/ScatterPlot';
 import CanvasPlot from '../../Components/Charts/CanvasPlot';
@@ -147,32 +146,9 @@ const Graphs = (props) => {
 					<Card className='card'>
 						{/* <CanvasPlot/> */}
 						<InfragisticLine />
-						{/* <h1>
-							SINR vs Throughput
-						</h1>
-						<Plot
-							data={[
-							{
-								x: Throughput,
-								y: SINR,
-								type: 'scatter',
-								mode: 'markers',
-								marker: {color: 'red',size:3,opacity:0.45},
-							}]}
-							layout={ {width: 800, height: 600, title: 'SINR vs Throughput',plot_bgcolor:'#e6ebf7',xaxis:{gridcolor:'#fff',title:{text:'Throughput (Mbps)'}},yaxis:{gridcolor:'#fff',title:{text:'SINR (dB)'}}} }
-						/> */}
+						
 						{/* <h1>SINR vs RSRP</h1> */}
-						{/* <Plot
-							data={[
-							{
-								x: RSRP,
-								y: SINR,
-								type: 'scatter',
-								mode: 'markers',
-								marker: {color: 'blue',size:3,opacity:0.45},
-							}]}
-							layout={ {width: 800, height: 600, title: 'SINR vs RSRP',plot_bgcolor:'#e6ebf7',xaxis:{gridcolor:'#fff',title:{text:'RSRP (dBm)'}},yaxis:{gridcolor:'#fff',title:{text:'SINR (dB)'}} }}
-						/> */}
+						
 						<div className='content'>
 							{/* <Row >
 								<Col xs={{ span: 24}} lg={{ span: 24}}>
