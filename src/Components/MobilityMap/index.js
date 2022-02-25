@@ -2,12 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { Marker } from 'react-leaflet';
 import { MapContainer, TileLayer, Polyline, Circle } from 'react-leaflet';
 import MarkerClusterGroup from 'react-leaflet-markercluster';
-import {data} from './data.js'
+import { data } from './data.js';
 
 const MobilityMap = () => {
 	const position = [32.960755, -96.716101];
 	// const [polyline, setPolyline] = useState([]);
-
 
 	// useEffect(() => {
 	// 	console.time('hello');
@@ -39,7 +38,7 @@ const MobilityMap = () => {
 					url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
 				/>
 				<MarkerClusterGroup>
-					{data?.map((item) => (
+					{data?.slice(0, 100).map((item) => (
 						<Circle center={item} color='blue' fillColor='blue' radius={0.1} />
 					))}
 				</MarkerClusterGroup>
