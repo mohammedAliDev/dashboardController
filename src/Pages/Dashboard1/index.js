@@ -10,6 +10,7 @@ import Header from '../../Components/Header';
 import Sidebar from '../../Components/Sidebar/Sidebar';
 import GeoMap from '../../Components/GeoMap';
 import MobilityMap from '../../Components/MobilityMap';
+import ScatterPlot from '../../Components/Charts/ScatterPlot';
 
 const Dashboard1 = () => {
 	const [open, setOpen] = useState(false);
@@ -82,7 +83,7 @@ const Dashboard1 = () => {
 												<h3>
 													Received Cellular Coverage Power by Application Device
 												</h3>
-												<img alt='' src={G1} />
+												<ScatterPlot kpiList={['rsrp','sinr']}></ScatterPlot>
 											</div>
 										</div>
 										<div className='col-md-6'>

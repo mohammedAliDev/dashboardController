@@ -17,31 +17,13 @@ import {
 	IgrScatterSeries,
 	IgrCategoryChartModule,
 } from 'igniteui-react-charts';
+import { forEach } from 'lodash';
 
 const mods = [IgrLegendModule, IgrCategoryChartModule];
 mods.forEach((m) => m.register());
 
 export default function Graph() {
-	const [data, setData] = useState([
-		{
-			year: `2009`,
-			europe: 34,
-			china: 21,
-			uSA: 19,
-		},
-		{
-			year: `2010`,
-			europe: 43,
-			china: 26,
-			uSA: 24,
-		},
-		{
-			year: `2011`,
-			europe: 66,
-			china: 29,
-			uSA: 28,
-		},
-	]);
+	const [data, setData] = useState([]);
 	let legend;
 	const legendRef = useRef();
 	const chartRef = useRef();
@@ -49,26 +31,36 @@ export default function Graph() {
         var apidata = {
             granularity : 'millisecond',
             attributes : ["rsrq","sinr"],
-            // filters:[
-            //     {
-            //         key:"timestamp",
-            //         Op:"lt",
-            //         value:'2022-02-23 05:40:51.932'
-            //     },
-            //     {
-            //         key:"timestamp",
-            //         Op:"gt",
-            //         value:'2022-02-22 06:26:51.932'
-            //     }
-            // ],
-            limit : 1000000,
+			// median : [0.25 , 0.75],
+            filters:[
+                {
+                    key:"timestamp",
+                    Op:"lt",
+                    value:'2022-02-23 05:40:51.932'
+                },
+                {
+                    key:"timestamp",
+                    Op:"gt",
+                    value:'2022-02-22 06:26:51.932'
+                }
+            ],
+            limit : 100,
         }
 
         axios
             .post('/apm-plugin/dashboard/aggregate',apidata)
             .then(res => {
                 console.log(res.data.Data)
-                setData(res.data.Data)
+				res.data.Data.forEach((e) => {
+					delete e.setSize;
+					delete e.avg_sinr;
+					delete e.timezone;
+					e.timestamp = new Date(e.timestamp).toLocaleString();
+					console.log(new Date(e.timestamp).toLocaleString())
+					
+				})
+
+                setData(res.data.Data.reverse())
     	        console.log("inside fetchdata useEffect",data)
             })
             .catch(err => {
@@ -90,12 +82,21 @@ export default function Graph() {
 					yAxisLabelLeftMargin='0'
 					yAxisTitleLeftMargin='10'
 					yAxisTitleRightMargin='5'
-					yAxisTitle='TWh'
+					yAxisTitle='RSRQ'
+					xAxisTitle='time'
+					xAxisTitleMargin='10'
 					dataSource={data}
-					legend={legend}
-					isHorizontalZoomEnabled='false'
+					thickness="1"
+					outlines="#d18194"
+					brushes="#d18194"
+					markerBrushes="#d18194"
+					markerOutlines="white"
+					legend={legendRef.current}
+					isHorizontalZoomEnabled='true'
 					isVerticalZoomEnabled='false'
 					ref={chartRef}
+					markerThickness="1"
+					// trendLineBrushes="#d18194"
 				></IgrCategoryChart>
 			</div>
 		</div>
