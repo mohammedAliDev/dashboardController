@@ -164,11 +164,10 @@ $tmobile_color: #ff65b6;
 		@include box;
 		padding: 15px;
 		background: #fff;
-		min-height: 220px;
+		min-height: 270px;
 		h3 {
 			@include title;
 			border-bottom: 1px solid #e6e6e6;
-			margin-bottom: 14px;
 		}
 	}
 

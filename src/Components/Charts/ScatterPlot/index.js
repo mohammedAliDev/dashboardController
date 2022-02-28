@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect } from 'react';
 import axios from 'axios'
+import './style.css'
 import {
     IgrLegendModule,
     IgrDataChartCoreModule,
@@ -73,26 +74,23 @@ const ScatterPlot = (props) => {
                     
     }
     return (
-        <div className="container sample">
+        <div className="sample">
             {/* <button onClick={()=>{fetchData()}}>Fetch</button> */}
-			<div className="legend">
-            <IgrLegend orientation="Horizontal" ref={legendRef}></IgrLegend>
-            </div>
-            <div className="container fill">
-                <IgrDataChart legend={legend} ref={chartRef} isHorizontalZoomEnabled="true" width='' >
+			<div className="container fill">
+                <IgrDataChart legend={legendRef.current} ref={chartRef} isHorizontalZoomEnabled="true">
                     <IgrNumericXAxis
-                    // minimumValue="0"
-                    // maximumValue="35"
+                    minimumValue="0"
+                    maximumValue="35"
                     title="SINR"
                     name="SINR"></IgrNumericXAxis>
                     <IgrNumericYAxis
                     // minimumValue="0"
                     // maximumValue="-30"
-                    title="RSRQ"
-                    name="RSRQ"></IgrNumericYAxis>
+                    title="RSRP"
+                    name="RSRP"></IgrNumericYAxis>
                     <IgrScatterSeries
                     xAxisName="SINR"
-                    yAxisName="RSRQ"
+                    yAxisName="RSRP"
                     xMemberPath="avg_sinr"
                     yMemberPath="avg_rsrp"
                     markerType="Circle"
@@ -101,8 +99,7 @@ const ScatterPlot = (props) => {
                     markerFillOpacity='0.5'
                     dataSource={data}
                     showDefaultTooltip="true"
-                    title="SINR vs RSRQ"
-                    
+                    title="SINR vs RSRP"
                     name="ScatterSeries1"></IgrScatterSeries>
                 </IgrDataChart>
             </div>
