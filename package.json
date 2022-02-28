@@ -9,6 +9,7 @@
 		"antd": "^4.18.5",
 		"axios": "^0.26.0",
 		"bootstrap": "^5.1.3",
+		"d3": "^7.3.0",
 		"igniteui-react-charts": "^16.15.0",
 		"igniteui-react-core": "^16.15.0",
 		"leaflet": "^1.7.1",
@@ -23,6 +24,7 @@
 		"react-scripts": "5.0.0",
 		"sass": "^1.49.7",
 		"source-map-url": "^0.4.1",
+		"use-debounce": "^7.0.1",
 		"web-vitals": "^2.1.4"
 	},
 	"scripts": {
