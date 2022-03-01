@@ -3,6 +3,7 @@ import './graphs.css';
 import { Card,Row,Col, Button } from 'antd';
 import 'antd/dist/antd.css';
 import ScatterPlot from '../../Components/Charts/ScatterPlot';
+import LineChart from '../../Components/Charts/LineChart'
 
 
 const Graphs = (props) => {
@@ -18,17 +19,7 @@ const Graphs = (props) => {
 	return (
 		<div className='container'>
 			<ScatterPlot></ScatterPlot>
-				<div className='content'>
-						
-						<div className='content'>
-							<ScatterPlot></ScatterPlot>
-							{/* <div className='divider'></div> */}
-						</div>
-						
-						<div className='content'>
-						
-						</div>
-				</div>
+			<LineChart></LineChart>
 			{/* s</Card> */}
 		</div>
 	)

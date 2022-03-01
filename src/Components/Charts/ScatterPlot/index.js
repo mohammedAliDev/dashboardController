@@ -59,12 +59,12 @@ const ScatterPlot = (props) => {
             if(kpiList[0]==='rsrq')
             {
                 setParaX('avg_rsrq')
-                setYLabel('Reference Signal Recieved Power (dBm)')
+                setYLabel('Reference Signal Received Power (dBm)')
             }
             else if(kpiList[0]==='rsrp')
             {
                 setParaX('avg_rsrp')
-                setYLabel('Reference Signal Recieved Quality (dB)')
+                setYLabel('Reference Signal Received Quality (dB)')
             }
         axios
             .post('/apm-plugin/dashboard/aggregate',apidata)
