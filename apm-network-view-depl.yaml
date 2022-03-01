@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: apm-network-view-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: apm-network-view
+  template:
+    metadata:
+      labels:
+        app: apm-network-view
+    spec:
+      containers:
+        - name: apm-network-view
+          image: gcr.io/PROJECT_ID/IMAGE:TAG
+          # env:
+          #   - name: VUE_APP_SERVERURL
+          #     value: 'https://in5genius.innovate5g.com/api/'
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: apm-network-view-srv
+spec:
+  selector:
+    app: apm-network-view
+  ports:
+    - name: apm-network-view
+      protocol: TCP
+      port: 3000
+      targetPort: 3000

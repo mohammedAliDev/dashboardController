@@ -75,8 +75,7 @@ const ScatterPlot = (props) => {
     }
     return (
         <div className="sample">
-            {/* <button onClick={()=>{fetchData()}}>Fetch</button> */}
-			<div className="container fill">
+            <div className="container fill">
                 <IgrDataChart legend={legendRef.current} ref={chartRef} isHorizontalZoomEnabled="true">
                     <IgrNumericXAxis
                     minimumValue="0"
@@ -84,8 +83,6 @@ const ScatterPlot = (props) => {
                     title="SINR"
                     name="SINR"></IgrNumericXAxis>
                     <IgrNumericYAxis
-                    // minimumValue="0"
-                    // maximumValue="-30"
                     title="RSRP"
                     name="RSRP"></IgrNumericYAxis>
                     <IgrScatterSeries
