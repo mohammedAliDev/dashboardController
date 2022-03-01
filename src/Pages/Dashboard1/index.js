@@ -5,7 +5,7 @@ import G1 from '../../Assets/Icons/g1.svg';
 import M5 from '../../Assets/Icons/m5.svg';
 import Node from '../../Assets/Icons/node.svg';
 import Table1 from '../../Assets/Icons/table1.svg';
-import Map from '../../Assets/Icons/map.svg';
+// import Map from '../../Assets/Icons/map.svg';
 import Header from '../../Components/Header';
 import Sidebar from '../../Components/Sidebar/Sidebar';
 import GeoMap from '../../Components/GeoMap';
@@ -21,7 +21,7 @@ const Dashboard1 = () => {
 					<Sidebar open={open} setOpen={setOpen} />
 				</div>
 				<div className='main_wrapper'>
-					<Header title="Welcome Back, Emran"/>
+					<Header title='Welcome Back, Emran' />
 					<div className='wrapperArea area_1'>
 						<div className='container_1'>
 							<div className='row'>
@@ -83,7 +83,7 @@ const Dashboard1 = () => {
 												<h3>
 													Received Cellular Coverage Power by Application Device
 												</h3>
-												<ScatterPlot kpiList={['rsrp','sinr']}></ScatterPlot>
+												<ScatterPlot kpiList={['rsrp', 'sinr']}></ScatterPlot>
 											</div>
 										</div>
 										<div className='col-md-6'>
@@ -142,7 +142,7 @@ const Dashboard1 = () => {
 												<h3>Experienced Throughput per Network Coverage</h3>
 												<div className='row'>
 													<div className='col-md-7'>
-														<img alt='' src={Map} />
+														{/* <img alt='' src={Map} /> */}
 													</div>
 													<div className='col-md-5'>
 														<img alt='' src={Table1} />
