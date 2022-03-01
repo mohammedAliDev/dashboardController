@@ -27,6 +27,8 @@ mods.forEach((m) => m.register());
 
 const ScatterPlot = (props) => {
     const [data, setData] = useState([]);
+    const [paraX, setParaX] = useState('');
+    const [yLabel, setYLabel] = useState('');
     const [interval, setInterval] = useState('minute');
     const [kpiList, setKpiList] = useState(props.kpiList);
     let legend;
@@ -34,7 +36,7 @@ const ScatterPlot = (props) => {
     const chartRef = useRef();
     useEffect(() => {
 		fetchData();
-	}, [kpiList]);
+	}, [kpiList,yLabel]);
     const fetchData = () => {
         var apidata = {
             granularity : interval,
@@ -54,7 +56,16 @@ const ScatterPlot = (props) => {
             // ],
             limit : 10000,
         }
-
+            if(kpiList[0]==='rsrq')
+            {
+                setParaX('avg_rsrq')
+                setYLabel('Reference Signal Recieved Power (dBm)')
+            }
+            else if(kpiList[0]==='rsrp')
+            {
+                setParaX('avg_rsrp')
+                setYLabel('Reference Signal Recieved Quality (dB)')
+            }
         axios
             .post('/apm-plugin/dashboard/aggregate',apidata)
             .then(res => {
@@ -71,6 +82,7 @@ const ScatterPlot = (props) => {
             .catch(err => {
                 console.log(err)
             })
+            
                     
     }
     return (
@@ -83,13 +95,13 @@ const ScatterPlot = (props) => {
                     title="SINR"
                     name="SINR"></IgrNumericXAxis>
                     <IgrNumericYAxis
-                    title="RSRP"
-                    name="RSRP"></IgrNumericYAxis>
+                    title={yLabel}
+                    name={yLabel}></IgrNumericYAxis>
                     <IgrScatterSeries
                     xAxisName="SINR"
-                    yAxisName="RSRP"
+                    yAxisName={yLabel}
                     xMemberPath="avg_sinr"
-                    yMemberPath="avg_rsrp"
+                    yMemberPath={paraX}
                     markerType="Circle"
                     markerBrush='#D18194'
                     markerOutline='#D35472'

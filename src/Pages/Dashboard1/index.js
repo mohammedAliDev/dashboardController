@@ -73,7 +73,7 @@ const Dashboard1 = () => {
 								<div className='col-lg-4 col-md-12 xs-mb_30'>
 									<div className='whiteBox'>
 										<h3>Cellular Coverage Quality per Network Type</h3>
-										<img alt='' src={G1} />
+										<ScatterPlot kpiList={['rsrq','sinr']}></ScatterPlot>
 									</div>
 								</div>
 								<div className='col-lg-8 col-md-12'>
