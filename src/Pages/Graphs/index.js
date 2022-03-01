@@ -1,28 +1,31 @@
-import React, { useState, useEffect } from 'react';
-import './graphs.css';
-import { Card,Row,Col, Button } from 'antd';
-import 'antd/dist/antd.css';
+import React, { useState } from 'react';
+import Header from '../../Components/Header';
+import Sidebar from '../../Components/Sidebar/Sidebar';
 import ScatterPlot from '../../Components/Charts/ScatterPlot';
-import LineChart from '../../Components/Charts/LineChart'
 
-
-const Graphs = (props) => {
-	// const [dataDisplayed, setDataDisplayed] = useState('applicationData');
-	// const [deviceDataDisplayed, setDeviceDataDisplayed] = useState('RTT');
-	const [appVersion, setAppVersion] = useState(24);
-	const [data, setData] = useState([]);
-	
-
-	// functions
-	
-
+const Dashboard1 = () => {
+	const [open, setOpen] = useState(false);
 	return (
-		<div className='container'>
-			<ScatterPlot  kpiList={['rsrp', 'sinr']}></ScatterPlot>
-			<LineChart></LineChart>
-			{/* s</Card> */}
-		</div>
-	)
+		<>
+			<div className='pageDashBoard'>
+				<div className={`SidebarArea ${open ? 'visibleBar' : ''}`}>
+					<Sidebar open={open} setOpen={setOpen} />
+				</div>
+				<div className='main_wrapper'>
+					<Header title='Application Device Details Connected to Cellular Sites' />
+					<div className='wrapperArea area_1'>
+						
+					</div>
+					<div className='wrapperArea area_2'>
+						
+					</div>
+					<div className='wrapperArea area_3'>
+						
+					</div>
+				</div>
+			</div>
+		</>
+	);
 };
 
-export default Graphs;
+export default Dashboard1;
