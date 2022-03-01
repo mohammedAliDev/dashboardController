@@ -87,7 +87,7 @@ const Dashboard = () => {
 		<>
 			<MapContainer
 				preferCanvas={true}
-				style={{ height: '224px' }}
+				style={{ height: '70vh' }}
 				center={[position[0], position[1]]}
 				zoom={5}
 			>
