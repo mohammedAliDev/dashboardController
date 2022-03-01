@@ -75,7 +75,6 @@ const ScatterPlot = (props) => {
             {
                 setParaX('avg_sinr')
                 setXLabel('Signal to Inference Noise Ratio (dBm)')
-                setSeriesTitle('SINR vs RSRP')
             }
 
         axios
@@ -107,6 +106,7 @@ const ScatterPlot = (props) => {
                     maximumValue="40"
                     title={xLabel}
                     name={xLabel}
+                    titleTopMargin={10}
                     stroke='black'
                     strokeThickness={1.5}
                     majorStrokeThickness={0.3}

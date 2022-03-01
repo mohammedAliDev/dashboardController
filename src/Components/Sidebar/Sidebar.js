@@ -60,12 +60,6 @@ const Sidebar = ({ open, setOpen }) => {
 								<span className='menuName'>Dummy</span>
 							</a>
 						</li>
-						<li>
-							<a href='/billing'>
-								<img alt='' src={Wallet} />{' '}
-								<span className='menuName'>Billing</span>
-							</a>
-						</li>
 					</ul>
 				</div>
 				<div className='userArea'>
