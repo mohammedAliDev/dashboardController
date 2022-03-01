@@ -28,7 +28,10 @@ mods.forEach((m) => m.register());
 const ScatterPlot = (props) => {
     const [data, setData] = useState([]);
     const [paraX, setParaX] = useState('');
+    const [xLabel, setXLabel] = useState('');
+    const [paraY, setParaY] = useState('');
     const [yLabel, setYLabel] = useState('');
+    const [seriesTitle, setSeriesTitle] = useState('series');
     const [interval, setInterval] = useState('minute');
     const [kpiList, setKpiList] = useState(props.kpiList);
     let legend;
@@ -58,14 +61,23 @@ const ScatterPlot = (props) => {
         }
             if(kpiList[0]==='rsrq')
             {
-                setParaX('avg_rsrq')
-                setYLabel('Reference Signal Received Power (dBm)')
+                setParaY('avg_rsrq')
+                setYLabel('Reference Signal Received Quality (dBm)')
+                setSeriesTitle('SINR vs RSRQ')
             }
             else if(kpiList[0]==='rsrp')
             {
-                setParaX('avg_rsrp')
-                setYLabel('Reference Signal Received Quality (dB)')
+                setParaY('avg_rsrp')
+                setYLabel('Reference Signal Received Power (dB)')
+                setSeriesTitle('SINR vs RSRP')
             }
+            if(kpiList[1]==='sinr')
+            {
+                setParaX('avg_sinr')
+                setXLabel('Signal to Inference Noise Ratio (dBm)')
+                setSeriesTitle('SINR vs RSRP')
+            }
+
         axios
             .post('/apm-plugin/dashboard/aggregate',apidata)
             .then(res => {
@@ -93,8 +105,8 @@ const ScatterPlot = (props) => {
                     interval={10}
                     minimumValue="0"
                     maximumValue="40"
-                    title="SINR"
-                    name="SINR"
+                    title={xLabel}
+                    name={xLabel}
                     stroke='black'
                     strokeThickness={1.5}
                     majorStrokeThickness={0.3}
@@ -107,17 +119,17 @@ const ScatterPlot = (props) => {
                     title={yLabel}
                     name={yLabel}></IgrNumericYAxis>
                     <IgrScatterSeries
-                    xAxisName="SINR"
+                    xAxisName={xLabel}
                     yAxisName={yLabel}
                     xMemberPath="avg_sinr"
-                    yMemberPath={paraX}
+                    yMemberPath={paraY}
                     markerType="Circle"
                     markerBrush='#D18194'
                     markerOutline='#D35472'
                     markerFillOpacity='0.5'
                     dataSource={data}
                     showDefaultTooltip="true"
-                    title="SINR vs RSRP"
+                    title={seriesTitle}
                     name="ScatterSeries1"></IgrScatterSeries>
                 </IgrDataChart>
             </div>
