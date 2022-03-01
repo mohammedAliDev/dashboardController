@@ -18,7 +18,7 @@ const Graphs = (props) => {
 
 	return (
 		<div className='container'>
-			<ScatterPlot></ScatterPlot>
+			<ScatterPlot  kpiList={['rsrp', 'sinr']}></ScatterPlot>
 			<LineChart></LineChart>
 			{/* s</Card> */}
 		</div>

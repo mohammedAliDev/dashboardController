@@ -90,11 +90,20 @@ const ScatterPlot = (props) => {
             <div className="container fill">
                 <IgrDataChart legend={legendRef.current} ref={chartRef} isHorizontalZoomEnabled="true">
                     <IgrNumericXAxis
+                    interval={10}
                     minimumValue="0"
-                    maximumValue="35"
+                    maximumValue="40"
                     title="SINR"
-                    name="SINR"></IgrNumericXAxis>
+                    name="SINR"
+                    stroke='black'
+                    strokeThickness={1.5}
+                    majorStrokeThickness={0.3}
+                    ></IgrNumericXAxis>
                     <IgrNumericYAxis
+                    interval={10}
+                    majorStrokeThickness={0.3}
+                    stroke='black'
+                    strokeThickness={1.5}
                     title={yLabel}
                     name={yLabel}></IgrNumericYAxis>
                     <IgrScatterSeries
