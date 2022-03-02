@@ -7,10 +7,10 @@ import axios from 'axios';
 let AccessURL = 'https://dev.phoenix.innovate5g.com/api/';
 axios.defaults.baseURL = AccessURL;
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+	<React.StrictMode>
+		<App />
+	</React.StrictMode>,
+	document.getElementById('root'),
 );
 
 // If you want to start measuring performance in your app, pass a function

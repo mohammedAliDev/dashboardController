@@ -70,7 +70,7 @@ const MobilityMap = () => {
 					value: boundaries._southWest.lat,
 				},
 			],
-			limit: 1145,
+			limit: 6000,
 			orderBy: ['timestamp', 'DESC'],
 		};
 
@@ -91,7 +91,7 @@ const MobilityMap = () => {
 			<MapContainer
 				style={{ height: '224px' }}
 				center={[position[0], position[1]]}
-				zoom={4}
+				zoom={12}
 			>
 				<TileLayer
 					attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

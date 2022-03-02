@@ -4,11 +4,11 @@ import ApplicationIcon from '../../Assets/Icons/applicationIcon.svg';
 import M5 from '../../Assets/Icons/m5.svg';
 import Node from '../../Assets/Icons/node.svg';
 import Table1 from '../../Assets/Icons/table1.svg';
-// import Map from '../../Assets/Icons/map.svg';
 import Header from '../../Components/Header';
 import Sidebar from '../../Components/Sidebar/Sidebar';
 import MobilityMap from '../../Components/MobilityMap';
 import ScatterPlot from '../../Components/Charts/ScatterPlot';
+import MobilityMap1 from '../../Components/MobilityMap1';
 
 const Dashboard1 = () => {
 	const [open, setOpen] = useState(false);
@@ -37,8 +37,8 @@ const Dashboard1 = () => {
 										<p>
 											Application Device Details Connected to Cellular Sites
 										</p>
-										{/* <GeoMap /> */}
-										<MobilityMap />
+										<GeoMap />
+
 										<div
 											className='flex-container'
 											style={{ zIndex: '99999999' }}
@@ -90,7 +90,7 @@ const Dashboard1 = () => {
 												<div className='row'>
 													<div className='col-md-6'>
 														<div className='mapInner'>
-															{/* <MobilityMap /> */}
+															{/* <MobilityMap1 /> */}
 															<span className='mapInnerSpan verizonMap'>
 																Verizon
 															</span>
@@ -98,7 +98,7 @@ const Dashboard1 = () => {
 													</div>
 													<div className='col-md-6'>
 														<div className='mapInner'>
-															{/* <MobilityMap /> */}
+															<MobilityMap />
 															<span className='mapInnerSpan at-tMap'>AT&T</span>
 														</div>
 													</div>
