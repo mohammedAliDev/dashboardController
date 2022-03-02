@@ -9,6 +9,7 @@ import Sidebar from '../../Components/Sidebar/Sidebar';
 import MobilityMap from '../../Components/MobilityMap';
 import ScatterPlot from '../../Components/Charts/ScatterPlot';
 import MobilityMap1 from '../../Components/MobilityMap1';
+import GeoMap from '../../Components/GeoMap';
 
 const Dashboard1 = () => {
 	const [open, setOpen] = useState(false);

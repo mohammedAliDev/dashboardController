@@ -11,8 +11,6 @@ const Routes = () => {
 			<R>
 				<Route path='/' element={<Dashboard1 />} exact />
 				<Route path='/graphs' element={<Graphs />} exact />
-				<Route path='/graph' elem ent={<Graph />} exact />
-				<Route path='/device-list' element={<DeviceList />} exact />
 				<Route path='/dashboard1' element={<Dashboard />} exact />
 				<Route path='/device-details' element={<DeviceDetails />} exact />
 			</R>
