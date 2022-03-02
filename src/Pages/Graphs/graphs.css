@@ -1,51 +1,11 @@
-.container{
-    padding: 3px;
-}
-.content{
-    padding: 5px;
-    margin-bottom: 10px;
-}
-.chip-btn{
-    margin-right: 8px;
-    margin-bottom: 5px;
-    background-color: rgb(54, 54, 241) !important;
-    color: white !important;
-}
-.chip-btn-sub{
-    margin-right: 5px;
-    margin-bottom: 3px;
-    background-color: rgb(245, 114, 67) !important;
-    border: 1px solid rgb(228, 157, 131) !important;
-    color: white !important;
-}
-.sel{
-    background-color: rgb(119, 119, 228) !important;
-    border: 1px solid rgb(119, 119, 228) !important;
-}
-.sel-sub{
-    background-color: rgb(228, 157, 131) !important;
-    border: 1px solid rgb(228, 157, 131) !important;
-}
-.card{
-    border: 1px solid #d4d4d4 !important;
-    border-radius: 10px !important;
-    padding: 5px 2px !important;
-    background-color: #e6dcdc !important;
-    margin-bottom:10px !important ;
-}
-.divider
+.underline
 {
-    border: 1px solid #ccbcbc;
+    border: 1px solid #BABABA;
     height: 0px;
     margin: 5px 0px;
 }
-.info{
-    padding: 15px 20px !important;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-.label{
-    font-weight: 600;
-    
+.wrapperArea1{
+  height: 100%;
 }
 .body{
     background-color: #f7efe3 !important;
@@ -59,37 +19,4 @@
     /* margin-left: 50%;
     margin-top: 28px; */
   }
-  .excellent {
-    display: flex;
-  }
-  .excellent > span,
-  .avg > span {
-    font-size: 14px;
-  }
-  .avg {
-    display: flex;
-    margin-left: 15px;
-  }
-  .circle {
-    width: 13px;
-    height: 13px;
-    border-radius: 3px;
-    margin-right: 5px;
-    margin-top: 3px;
-  }
-  .greenCircle {
-    background-color: #91ffb8;
-    border: 1px solid #91ffb8;
-  }
-  .blueCircle {
-    background-color: #a1d5ff;
-    border: 1px solid #a1d5ff;
-  }
-  .yellowCircle {
-    background-color: #faff74;
-    border: 1px solid #faff74;
-  }
-  .redCircle {
-    background-color: #ff8585;
-    border: 1px solid #ff8585;
-  }
+  

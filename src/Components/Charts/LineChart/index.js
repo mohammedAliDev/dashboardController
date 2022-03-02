@@ -18,33 +18,66 @@ import {
 	IgrCategoryChartModule,
 } from 'igniteui-react-charts';
 import { forEach } from 'lodash';
+const cdf = require('cumulative-distribution-function');
 
 const mods = [IgrLegendModule, IgrCategoryChartModule];
 mods.forEach((m) => m.register());
 
-export default function LineChart() {
+export default function LineChart(props) {
 	const [data, setData] = useState([]);
+	const [kpiList, setKPIList] = useState(props.kpiList)
 	let legend;
 	const legendRef = useRef();
 	const chartRef = useRef();
+	useEffect(() => {
+		fetchData();
+	}, [kpiList]);
+
+	function sortNum(a,b){
+		return a-b;
+	}
+	const preProcessData = (tempData) => {
+		var temp = [];
+		var newt = []
+		tempData.forEach((e) => {
+			newt.push(e.avg_rsrp)
+		})
+		const cleanData = newt
+                    .map((v)=>(+v))
+                    .filter((v)=>(isFinite(v)));
+		var mycdf  = cdf(cleanData);
+		let outputArray = Array.from(new Set(cleanData))
+		outputArray.sort(sortNum);
+		console.log(outputArray)
+		
+		outputArray.forEach((x) => {
+			let y = mycdf(x)
+			let e = {}
+			e.x = x.toString();
+			e.y = y;
+			temp.push(e)
+		})
+		console.log(temp)
+		setData(temp)
+	}
+
 	const fetchData = () => {
         var apidata = {
             granularity : 'millisecond',
-            attributes : ["rsrq","sinr"],
-			// median : [0.25 , 0.75],
-            filters:[
-                {
-                    key:"timestamp",
-                    Op:"lt",
-                    value:'2022-02-23 05:40:51.932'
-                },
-                {
-                    key:"timestamp",
-                    Op:"gt",
-                    value:'2022-02-22 06:26:51.932'
-                }
-            ],
-            limit : 100,
+            attributes : kpiList,
+			// filters:[
+            //     {
+            //         key:"timestamp",
+            //         Op:"lt",
+            //         value:'2022-02-23 05:40:51.932'
+            //     },
+            //     {
+            //         key:"timestamp",
+            //         Op:"gt",
+            //         value:'2022-02-22 06:26:51.932'
+            //     }
+            // ],
+            limit : 10000,
         }
 
         axios
@@ -53,40 +86,38 @@ export default function LineChart() {
                 console.log(res.data.Data)
 				res.data.Data.forEach((e) => {
 					delete e.setSize;
-					delete e.avg_sinr;
 					delete e.timezone;
-					e.timestamp = new Date(e.timestamp).toLocaleString();
-					console.log(new Date(e.timestamp).toLocaleString())
-					
+					delete e.timestamp
+					// e.timestamp = new Date(e.timestamp).toLocaleString();
+					// console.log(new Date(e.timestamp).toLocaleString())
 				})
-
-                setData(res.data.Data.reverse())
-    	        console.log("inside fetchdata useEffect",data)
+				preProcessData(res.data.Data)
+                // setData(res.data.Data.reverse())
             })
             .catch(err => {
                 console.log(err)
             })
-                    
     }
 
 	return (
 		<div className='container sample'>
-			<button onClick={()=>{fetchData()}}>Fetch</button>
 			<div className='legend-title'>Renewable Electricity Generated</div>
-			<div className='legend'>
+			{/* <div className='legend'>
 				<IgrLegend orientation='Horizontal' ref={legendRef}></IgrLegend>
-			</div>
+			</div> */}
 			<div className='container fill'>
 				<IgrCategoryChart
-					chartType='Line'
+					yAxisMinimumValue='0'
+					yAxisMaximumValue='1.1'
+					chartType='Spline'
 					yAxisLabelLeftMargin='0'
 					yAxisTitleLeftMargin='10'
 					yAxisTitleRightMargin='5'
-					yAxisTitle='RSRQ'
+					yAxisTitle='rsrp'
 					xAxisTitle='time'
 					xAxisTitleMargin='10'
 					dataSource={data}
-					thickness="1"
+					thickness={1.2}
 					outlines="#d18194"
 					brushes="#d18194"
 					markerBrushes="#d18194"
@@ -95,7 +126,7 @@ export default function LineChart() {
 					isHorizontalZoomEnabled='true'
 					isVerticalZoomEnabled='false'
 					ref={chartRef}
-					markerThickness="1"
+					markerThickness={0.2}
 					// trendLineBrushes="#d18194"
 				></IgrCategoryChart>
 			</div>
