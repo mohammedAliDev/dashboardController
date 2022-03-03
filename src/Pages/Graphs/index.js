@@ -44,14 +44,14 @@ const Dashboard1 = () => {
 						</div>
 					</div>
 					<div className='graph-category-bar'>
-						<div className='graph-category'>
+						<div className='graph-category col-2' style={{backgroundColor:'#C2D9FD'}}>
 							<span>Throughput</span>
 						</div>
-						<div className='graph-category'>
-							<span>Throughput</span>
+						<div className='graph-category col-2'>
+							<span>Latency</span>
 						</div>
-						<div className='graph-category'>
-							<span>Throughput</span>
+						<div className='graph-category col-2'>
+							<span>Coverage</span>
 						</div>
 					</div>
 					</div>
