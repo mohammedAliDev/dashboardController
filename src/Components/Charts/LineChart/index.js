@@ -101,7 +101,7 @@ export default function LineChart(props) {
 
 	return (
 		<div className='container sample'>
-			<div className='legend-title'>Renewable Electricity Generated</div>
+			{/* <div className='legend-title'>{props.chartTitle}</div> */}
 			{/* <div className='legend'>
 				<IgrLegend orientation='Horizontal' ref={legendRef}></IgrLegend>
 			</div> */}
@@ -113,8 +113,8 @@ export default function LineChart(props) {
 					yAxisLabelLeftMargin='0'
 					yAxisTitleLeftMargin='10'
 					yAxisTitleRightMargin='5'
-					yAxisTitle='rsrp'
-					xAxisTitle='time'
+					yAxisTitle=''
+					xAxisTitle='rsrq'
 					xAxisTitleMargin='10'
 					dataSource={data}
 					thickness={1.2}
@@ -126,6 +126,8 @@ export default function LineChart(props) {
 					isHorizontalZoomEnabled='true'
 					isVerticalZoomEnabled='false'
 					ref={chartRef}
+					xAxisMajorStrokeThickness={0.3}
+					yAxisMajorStrokeThickness={0.3}
 					markerThickness={0.2}
 					// trendLineBrushes="#d18194"
 				></IgrCategoryChart>

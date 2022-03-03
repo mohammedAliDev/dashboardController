@@ -8,6 +8,7 @@ import Header from '../../Components/Header';
 import Sidebar from '../../Components/Sidebar/Sidebar';
 import MobilityMap from '../../Components/MobilityMap';
 import ScatterPlot from '../../Components/Charts/ScatterPlot';
+import LineChart from '../../Components/Charts/LineChart';
 import MobilityMap1 from '../../Components/MobilityMap1';
 import GeoMap from '../../Components/GeoMap';
 
@@ -69,7 +70,7 @@ const Dashboard1 = () => {
 					<div className='wrapperArea area_2'>
 						<div className='container_1'>
 							<div className='row'>
-								<div className='col-lg-4 col-md-12 xs-mb_30'>
+								<div className='col-lg-4 col-md-12'>
 									<div className='whiteBox'>
 										<h3>Cellular Coverage Quality per Network Type</h3>
 										<ScatterPlot kpiList={['rsrq','sinr']}></ScatterPlot>
@@ -82,7 +83,10 @@ const Dashboard1 = () => {
 												<h3>
 													Received Cellular Coverage Power by Application Device
 												</h3>
-												<ScatterPlot kpiList={['rsrp', 'sinr']}></ScatterPlot>
+												<LineChart 
+													kpiList={['rsrp']}
+													chartTitle = 'CDF Plot for RSRQ'
+												></LineChart>
 											</div>
 										</div>
 										<div className='col-md-6'>
@@ -114,7 +118,7 @@ const Dashboard1 = () => {
 					<div className='wrapperArea area_3'>
 						<div className='container_1'>
 							<div className='row'>
-								<div className='col-lg-4 col-md-12 xs-mb_30'>
+								<div className='col-lg-4 col-md-12'>
 									<div className='whiteBox'>
 										<h3>Application instance mobility Throughput</h3>
 										<img alt='' src={M5} />

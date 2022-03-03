@@ -107,14 +107,14 @@ const ScatterPlot = (props) => {
                     title={xLabel}
                     name={xLabel}
                     titleTopMargin={10}
-                    stroke='black'
+                    stroke='#8d8d8d'
                     strokeThickness={1.5}
                     majorStrokeThickness={0.3}
                     ></IgrNumericXAxis>
                     <IgrNumericYAxis
                     interval={10}
                     majorStrokeThickness={0.3}
-                    stroke='black'
+                    stroke='#8d8d8d'
                     strokeThickness={1.5}
                     title={yLabel}
                     name={yLabel}></IgrNumericYAxis>

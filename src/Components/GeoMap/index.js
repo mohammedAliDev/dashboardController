@@ -103,8 +103,8 @@ const Dashboard = () => {
 						]}
 						icon={item?.markerIcon}
 						onClick={(e) => {
-							navigate('/device-list', { state: { view: 'live' } });
-							// navigate('/graphs');
+							// navigate('/device-list', { state: { view: 'live' } });
+							navigate('/apm/graphs');
 						}}
 						onMouseOver={(e) => {
 							e.target.openPopup();
