@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { MapContainer, Marker, TileLayer, Popup } from 'react-leaflet';
+import { MapContainer, Marker, Circle, TileLayer, Popup } from 'react-leaflet';
 import { data } from '../../utils/data';
 import L from 'leaflet';
 import { useNavigate } from 'react-router-dom';
@@ -45,7 +45,7 @@ var [icon1, icon2, icon3, icon4, icon5, icon6, icon7, icon8, icon9, icon10] = [
 	}),
 ];
 
-const Dashboard = () => {
+const Dashboard = ({height}) => {
 	const position = [32.962171, -96.710217];
 	const [deviceLocations, setDeviceLocations] = useState([]);
 	const icons = [
@@ -76,6 +76,7 @@ const Dashboard = () => {
 				markerIcon: icons[i],
 			});
 		}
+
 		setDeviceLocations(arr);
 	};
 
@@ -87,7 +88,7 @@ const Dashboard = () => {
 		<>
 			<MapContainer
 				preferCanvas={true}
-				style={{ height: '224px' }}
+				style={{ height }}
 				center={[position[0], position[1]]}
 				zoom={5}
 			>
@@ -102,10 +103,12 @@ const Dashboard = () => {
 							item['Longitude of Connected Radio'],
 						]}
 						icon={item?.markerIcon}
-						onClick={(e) => {
-							// navigate('/device-list', { state: { view: 'live' } });
-							navigate('/apm/graphs');
-						}}
+						
+						eventHandlers={{
+							click: (e) => {
+							navigate('/device-details', { state: { view: 'live' } });
+							},
+							}}
 						onMouseOver={(e) => {
 							e.target.openPopup();
 						}}

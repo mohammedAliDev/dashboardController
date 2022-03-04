@@ -9,44 +9,47 @@ import {
 } from 'react-leaflet';
 import MarkerClusterGroup from 'react-leaflet-markercluster';
 import { useDebouncedCallback } from 'use-debounce';
+import 'react-leaflet-fullscreen/dist/styles.css';
+import { FullscreenControl } from 'react-leaflet-fullscreen';
 
 const MobilityMap = () => {
 	const [mobilityData, setMobilityData] = useState([]);
-	const position = [32.960755, -96.716101];
+	const [show, setShow] = useState(false);
+	const position = [24.0583, 84.0662];
 
 	const handleFetchData = (boundaries) => {
 		var apidata = {
 			attributes: [
-				'id',
+				// 'id',
 				'timestamp',
-				'timezone',
+				// 'timezone',
 				'longitude',
 				'latitude',
 				'location',
-				'device',
-				'brand',
-				'model',
-				'plmnID',
-				'networkType',
-				'pci',
-				'tac',
-				'bandInfo',
-				'bandwidth',
-				'rsrp',
-				'rsrq',
-				'rssi',
-				'cqi',
-				'sinr',
-				'throughput',
-				'rtt',
-				'deviceTaskTotal',
-				'deviceApplicationTask',
-				'deviceCPUUtilizationTotal',
-				'deviceCPUUtlizationApplication',
-				'timingAdvance',
-				'applicationId',
-				'userId',
-				'pluginId',
+				// 'device',
+				// 'brand',
+				// 'model',
+				// 'plmnID',
+				// 'networkType',
+				// 'pci',
+				// 'tac',
+				// 'bandInfo',
+				// 'bandwidth',
+				// 'rsrp',
+				// 'rsrq',
+				// 'rssi',
+				// 'cqi',
+				// 'sinr',
+				// 'throughput',
+				// 'rtt',
+				// 'deviceTaskTotal',
+				// 'deviceApplicationTask',
+				// 'deviceCPUUtilizationTotal',
+				// 'deviceCPUUtlizationApplication',
+				// 'timingAdvance',
+				// 'applicationId',
+				// 'userId',
+				// 'pluginId',
 			],
 			filters: [
 				{
@@ -69,8 +72,18 @@ const MobilityMap = () => {
 					Op: 'gt',
 					value: boundaries._southWest.lat,
 				},
+				{
+					key: 'timestamp',
+					Op: 'gt',
+					value: '2022-03-01T02:30:00.000Z',
+				},
+				{
+					key: 'timestamp',
+					Op: 'lt',
+					value: '2022-03-01T06:30:00.000Z',
+				},
 			],
-			limit: 6000,
+			limit: 10000,
 			orderBy: ['timestamp', 'DESC'],
 		};
 
@@ -91,7 +104,7 @@ const MobilityMap = () => {
 			<MapContainer
 				style={{ height: '224px' }}
 				center={[position[0], position[1]]}
-				zoom={12}
+				zoom={8}
 			>
 				<TileLayer
 					attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -101,6 +114,7 @@ const MobilityMap = () => {
 					handleFetchData={handleFetchData}
 					mobilityData={mobilityData}
 				/>
+				<FullscreenControl />
 			</MapContainer>
 		</>
 	);
@@ -110,7 +124,7 @@ const BoundaryBound = ({ handleFetchData, mobilityData }) => {
 	const map = useMap();
 	const debounced = useDebouncedCallback((updatedBoundary) => {
 		handleFetchData(updatedBoundary);
-	}, 2000);
+	}, 1500);
 
 	useMapEvents({
 		zoom: () => {
@@ -126,9 +140,8 @@ const BoundaryBound = ({ handleFetchData, mobilityData }) => {
 	}, []);
 
 	return (
-		// <MarkerClusterGroup>
-		// 	{
-			mobilityData?.map((item) => (
+		<MarkerClusterGroup disableClusteringAtZoom={12}>
+			{mobilityData?.map((item) => (
 				<Circle
 					center={[item?.latitude, item?.longitude]}
 					color='blue'
@@ -136,8 +149,8 @@ const BoundaryBound = ({ handleFetchData, mobilityData }) => {
 					radius={0.1}
 				/>
 			))
-		// }
-		// </MarkerClusterGroup>
+		}
+		</MarkerClusterGroup>
 	);
 };
 

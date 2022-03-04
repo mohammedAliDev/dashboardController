@@ -1,0 +1,97 @@
+$blueColor: #323467;
+$lightGreen: #ecf9ff;
+$greenColor: #50ac1e;
+
+h2.box_h2 {
+	color: $blueColor;
+	font-weight: 600;
+	font-size: 22px;
+	padding: 14px 20px;
+	margin: 0;
+}
+.areaBox.innerBoxes {
+	position: relative;
+	.whiteBoxInner {
+		width: auto;
+		position: absolute;
+		bottom: 15px;
+		left: 15px;
+		z-index: 99999;
+		background: #fff;
+		padding: 20px 20px 10px 50px;
+		border-radius: 8px;
+		.boxInner {
+			background-color: $lightGreen;
+			box-shadow: 0px 6px 15px rgb(0 0 0 / 15%);
+			border-radius: 10px;
+			margin: 0 0 20px 0;
+			padding: 15px 10px 5px;
+			color: $blueColor;
+			min-width: 200px;
+			position: relative;
+
+			p {
+				padding: 0 !important;
+				margin-bottom: 10px !important;
+				font-size: 12px;
+				font-weight: 400;
+				line-height: 15px;
+				b {
+					font-weight: 600;
+					font-size: 16px;
+				}
+			}
+			&:after {
+				background: rgba(204, 2, 48, 1);
+				position: absolute;
+				content: '';
+				left: -25px;
+				top: 50%;
+				border-radius: 50%;
+				z-index: 9999;
+				padding: 5px;
+				box-shadow: 0 0 0px 4px rgba(204, 2, 48, 0.5);
+			}
+			&:before {
+				position: absolute;
+				content: '';
+				width: 1px;
+				height: 120%;
+				border-left: 2px dashed #b5b5b5;
+				left: -20px;
+				top: 0px;
+			}
+			&:first-child:before {
+				top: 50% !important;
+				height: 110% !important;
+			}
+			&:last-child:before {
+				bottom: 50% !important;
+				top: auto !important;
+				height: 110% !important;
+			}
+			span.activeClass {
+				background: $greenColor;
+				padding: 5px;
+				position: absolute;
+				right: 15px;
+				top: 15px;
+				border-radius: 50%;
+			}
+		}
+	}
+	img.buttonImage {
+		max-width: 26px;
+		min-width: 26px;
+		position: absolute;
+		right: 60px;
+		top: 15px;
+		z-index: 99;
+		cursor: pointer;
+	}
+	img.buttonImage.maximizeImg {
+		right: 16px;
+		min-width: 42px;
+		top: 10px;
+	}
+}

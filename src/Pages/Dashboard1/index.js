@@ -8,9 +8,6 @@ import Header from '../../Components/Header';
 import Sidebar from '../../Components/Sidebar/Sidebar';
 import MobilityMap from '../../Components/MobilityMap';
 import ScatterPlot from '../../Components/Charts/ScatterPlot';
-import LineChart from '../../Components/Charts/LineChart';
-import MobilityMap1 from '../../Components/MobilityMap1';
-import GeoMap from '../../Components/GeoMap';
 
 const Dashboard1 = () => {
 	const [open, setOpen] = useState(false);
@@ -39,7 +36,7 @@ const Dashboard1 = () => {
 										<p>
 											Application Device Details Connected to Cellular Sites
 										</p>
-										<GeoMap />
+										<GeoMap height='224px' />
 
 										<div
 											className='flex-container'
@@ -95,7 +92,7 @@ const Dashboard1 = () => {
 												<div className='row'>
 													<div className='col-md-6'>
 														<div className='mapInner'>
-															{/* <MobilityMap1 /> */}
+															<MobilityMap />
 															<span className='mapInnerSpan verizonMap'>
 																Verizon
 															</span>
