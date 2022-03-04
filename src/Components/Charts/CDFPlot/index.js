@@ -23,7 +23,7 @@ const cdf = require('cumulative-distribution-function');
 const mods = [IgrLegendModule, IgrCategoryChartModule];
 mods.forEach((m) => m.register());
 
-export default function LineChart(props) {
+export default function CDFPlot(props) {
 	const [data, setData] = useState([]);
 	const [kpiList, setKPIList] = useState(props.kpiList)
 	let legend;
@@ -54,7 +54,7 @@ export default function LineChart(props) {
 			let y = mycdf(x)
 			let e = {}
 			e.x = x.toString();
-			e.y = y;
+			e.y = y*100;
 			temp.push(e)
 		})
 		console.log(temp)
@@ -87,12 +87,12 @@ export default function LineChart(props) {
 				res.data.Data.forEach((e) => {
 					delete e.setSize;
 					delete e.timezone;
-					// delete e.timestamp
-					e.timestamp = new Date(e.timestamp).toLocaleString();
+					delete e.timestamp
+					// e.timestamp = new Date(e.timestamp).toLocaleString();
 					// console.log(new Date(e.timestamp).toLocaleString())
 				})
-				// preProcessData(res.data.Data)
-                setData(res.data.Data.reverse())
+				preProcessData(res.data.Data)
+                // setData(res.data.Data.reverse())
             })
             .catch(err => {
                 console.log(err)
@@ -107,8 +107,8 @@ export default function LineChart(props) {
 			</div> */}
 			<div className='container fill'>
 				<IgrCategoryChart
-					// yAxisMinimumValue='0'
-					// yAxisMaximumValue='1.1'
+					yAxisMinimumValue='0'
+					yAxisMaximumValue='100'
 					chartType='Line'
 					yAxisLabelLeftMargin='0'
 					yAxisTitleLeftMargin='10'

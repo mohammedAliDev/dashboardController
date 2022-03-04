@@ -35,7 +35,7 @@ const DeviceDetails = () => {
 											Application Device Details Connected to Cellular Sites
 										</h2>
 										<GeoMap height='70vh' />
-										<div className='whiteBoxInner'>
+										{/* <div className='whiteBoxInner'>
 											<div className='boxInner'>
 												<span className='activeClass'></span>
 												<p className='row'>
@@ -96,7 +96,7 @@ const DeviceDetails = () => {
 													<div className='col-md-6'>Motorola</div>
 												</p>
 											</div>
-										</div>
+										</div> */}
 
 										<div className='flex-container' style={{ zIndex: '9999' }}>
 											<div className='ulPosition'>

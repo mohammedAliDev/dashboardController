@@ -7,6 +7,9 @@ import Table1 from '../../Assets/Icons/table1.svg';
 import Header from '../../Components/Header';
 import Sidebar from '../../Components/Sidebar/Sidebar';
 import MobilityMap from '../../Components/MobilityMap';
+import GeoMap from '../../Components/GeoMap';
+import LineChart from '../../Components/Charts/LineChart';
+import CDFPlot from '../../Components/Charts/CDFPlot';
 import ScatterPlot from '../../Components/Charts/ScatterPlot';
 
 const Dashboard1 = () => {
@@ -80,10 +83,10 @@ const Dashboard1 = () => {
 												<h3>
 													Received Cellular Coverage Power by Application Device
 												</h3>
-												<LineChart 
+												<CDFPlot 
 													kpiList={['rsrp']}
 													chartTitle = 'CDF Plot for RSRQ'
-												></LineChart>
+												></CDFPlot>
 											</div>
 										</div>
 										<div className='col-md-6'>

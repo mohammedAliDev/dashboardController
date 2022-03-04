@@ -4,8 +4,9 @@ import Sidebar from '../../../Components/Sidebar/Sidebar';
 import LineChart from '../../../Components/Charts/LineChart';
 import './style.css'
 import DeviceInfoHeader from '../../../Components/DeviceInfoHeader';
-
+import { useNavigate } from 'react-router-dom';
 const LatencyGraph = () => {
+	const navigate = useNavigate();
 	const [open, setOpen] = useState(false);
 	return (
 		<>
@@ -18,16 +19,16 @@ const LatencyGraph = () => {
 					<div className='underline'></div>
 					<DeviceInfoHeader></DeviceInfoHeader>
 					<div className='graph-category-bar'>
-						<div className='graph-category col-2'>
+						<div className='graph-category col-2' onClick={(e) => {navigate('/graphs/throughput')}}>
 							<span>Throughput</span>
 						</div>
 						<div className='graph-category col-2' style={{backgroundColor:'#C2D9FD'}}>
 							<span>Latency</span>
 						</div>
-						<div className='graph-category col-2'>
+						<div className='graph-category col-2' onClick={(e) => {navigate('/graphs/coverage')}}>
 							<span>Coverage</span>
 						</div>
-						<div className='graph-category col-2'>
+						<div className='graph-category col-2' onClick={(e) => {navigate('/graphs/analysis')}}>
 							<span>Analysis</span>
 						</div>
 					</div>

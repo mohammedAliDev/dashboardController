@@ -45,19 +45,14 @@ const ScatterPlot = (props) => {
             granularity : interval,
             attributes : kpiList,
 			// median : [0.25 , 0.75],
-            // filters:[
-            //     {
-            //         key:"timestamp",
-            //         Op:"lt",
-            //         value:'2022-02-23 05:40:51.932'
-            //     },
-            //     {
-            //         key:"timestamp",
-            //         Op:"gt",
-            //         value:'2022-02-22 06:26:51.932'
-            //     }
-            // ],
-            limit : 10000,
+            filters:[
+                {
+                    key:"rsrq",
+                    Op:"gt",
+                    value:'-500'
+                }
+            ],
+            limit : 20000,
         }
             if(kpiList[0]==='rsrq')
             {

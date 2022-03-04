@@ -104,7 +104,7 @@ const MobilityMap = () => {
 			<MapContainer
 				style={{ height: '224px' }}
 				center={[position[0], position[1]]}
-				zoom={8}
+				zoom={12}
 			>
 				<TileLayer
 					attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
