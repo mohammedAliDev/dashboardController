@@ -1,0 +1,30 @@
+.wrapperArea1{
+    height: 100%;
+  }
+  .body{
+      background-color: #f7efe3 !important;
+  }
+  .device_info_bar{
+      height: 58px;
+      flex: 5;
+      display: flex;
+      justify-content: space-between;
+  }
+  .info-chip{
+    font-size: 14px;
+    padding: 8px 6px;
+    font-family: Nunito;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    color: #323467;
+    border-right: 1px solid #dcdcdc;
+    background: linear-gradient(180deg, #F4F4F4 0%, #EBEBEB 100%);
+  }
+  .label-name{
+    font-weight: 600;
+  }
+  .info{
+    font-weight: 400;
+  }
+  

@@ -126,16 +126,18 @@ const BoundaryBound = ({ handleFetchData, mobilityData }) => {
 	}, []);
 
 	return (
-		<MarkerClusterGroup>
-			{mobilityData?.map((item) => (
+		// <MarkerClusterGroup>
+		// 	{
+			mobilityData?.map((item) => (
 				<Circle
 					center={[item?.latitude, item?.longitude]}
 					color='blue'
 					fillColor='blue'
 					radius={0.1}
 				/>
-			))}
-		</MarkerClusterGroup>
+			))
+		// }
+		// </MarkerClusterGroup>
 	);
 };
 
