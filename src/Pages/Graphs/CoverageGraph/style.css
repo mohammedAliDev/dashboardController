@@ -26,7 +26,11 @@
   display: flex;
 }
 .graph-tile{
-  height: 500px;
+  /* display: flex; */
+  position: relative;
+  height: 400px !important;
+  padding: 5px 0px;
+  box-shadow: 4px 4px 20px rgb(51 51 51 / 15%);
 }
 
 .styleTrendLines {

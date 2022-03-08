@@ -108,6 +108,7 @@ export default function CDFPlot(props) {
 			<div className='container fill'>
 				<IgrCategoryChart
 					yAxisMinimumValue='0'
+					yAxisInterval={20}
 					yAxisMaximumValue='100'
 					chartType='Line'
 					yAxisLabelLeftMargin='0'

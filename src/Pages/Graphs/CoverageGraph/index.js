@@ -29,21 +29,45 @@ const CoverageGraph = () => {
 						<div className='graph-category col-2' style={{backgroundColor:'#C2D9FD'}}>
 							<span>Coverage</span>
 						</div>
-						<div className='graph-category col-2' onClick={(e) => {navigate('/graphs/analysis')}}>
+						{/* <div className='graph-category col-2' onClick={(e) => {navigate('/graphs/analysis')}}>
 							<span>Analysis</span>
-						</div>
+						</div> */}
 					</div>
 					<div className='graph-container'>
 						<div className='col-lg-6 graph-tile'>
+							<div className='graph-header'>
+								<span>Throughput Graph</span>
+								<div className='divider'></div>
+							</div>
 							<LineChart 
-								kpiList={['rsrp']}
-								chartTitle = 'CDF Plot for RSRQ'
+								kpiList={['rsrq']}
 							></LineChart>
 						</div>
 						<div className='col-lg-6 graph-tile'>
+							<div className='graph-header'>
+								<span>Throughput Graph</span>
+								<div className='divider'></div>
+							</div>
 							<LineChart 
 								kpiList={['rsrp']}
-								chartTitle = 'CDF Plot for RSRQ'
+							></LineChart>
+						</div>
+						<div className='col-lg-6 graph-tile'>
+							<div className='graph-header'>
+								<span>Throughput Graph</span>
+								<div className='divider'></div>
+							</div>
+							<LineChart 
+								kpiList={['rsrp']}
+							></LineChart>
+						</div>
+						<div className='col-lg-6 graph-tile'>
+							<div className='graph-header'>
+								<span>Throughput Graph</span>
+								<div className='divider'></div>
+							</div>
+							<LineChart 
+								kpiList={['rsrp']}
 							></LineChart>
 						</div>
 					</div>

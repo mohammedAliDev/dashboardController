@@ -28,23 +28,22 @@ const LatencyGraph = () => {
 						<div className='graph-category col-2' onClick={(e) => {navigate('/graphs/coverage')}}>
 							<span>Coverage</span>
 						</div>
-						<div className='graph-category col-2' onClick={(e) => {navigate('/graphs/analysis')}}>
+						{/* <div className='graph-category col-2' onClick={(e) => {navigate('/graphs/analysis')}}>
 							<span>Analysis</span>
-						</div>
+						</div> */}
 					</div>
 					<div className='graph-container'>
-						<div className='col-lg-6 graph-tile'>
+						<div className='col-lg-12 graph-tile'>
+							<div className='graph-header'>
+								<span>Latency Graph</span>
+								<div className='divider'></div>
+							</div>
 							<LineChart 
-								kpiList={['rsrp']}
+								kpiList={['rtt']}
 								chartTitle = 'CDF Plot for RSRQ'
 							></LineChart>
 						</div>
-						<div className='col-lg-6 graph-tile'>
-							<LineChart 
-								kpiList={['rsrp']}
-								chartTitle = 'CDF Plot for RSRQ'
-							></LineChart>
-						</div>
+						
 					</div>
 				</div>
 			</div>
