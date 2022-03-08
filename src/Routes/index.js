@@ -10,7 +10,7 @@ import CoverageGraph from '../Pages/Graphs/CoverageGraph';
 
 const Routes = () => {
 	return (
-		<BrowserRouter basename='/apm'>
+		<BrowserRouter>
 			<R>
 				<Route path='/' element={<Dashboard1 />} exact />
 				<Route path='/graphs/analysis' element={<AnalysisGraph />} exact />
